@@ -1,31 +1,71 @@
 const { Schema, model } = require('mongoose');
+const Project = require('./Project');
 
 const emailValidate = function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
     return re.test(String(email).toLowerCase());
 };
 
+
 const userSchema = new Schema({
-    name: {
-        type: String,
-        required: true,
-        trim: true,
-    },
     githubUser: {
         type: String, 
         required: true,
         trim: true,
     },
-    email: {
-        type: String, 
-        required: true,
-        trim: true,
-        validate: [emailValidate, 'invalid Email']
-    },
-    swipeRight: {
+    password: {
         type: String,
-        
-    }
+        required: true,
+        min: 6,
+    },
+    
+    // email: {
+    //     type: String, 
+    //     required: true,
+    //     trim: true,
+    //     validate: [emailValidate, 'invalid Email']
+    // },
+    name: {
+        type: String,
+        trim: true,
+    },
+    avatar: {
+        type: String
+    },
+    blog: {
+        type: String
+    },
+    location: {
+        type: String
+    },
+    member_since: {
+        type: String 
+    },
+    bio: {
+        type: String
+    },
+
+    swipeRight: [
+        { 
+            type: Schema.Types.ObjectId, ref: 'User' 
+        }
+    ],
+    mutuals: [
+        { 
+            type: Schema.Types.ObjectId, ref: 'User' 
+        }
+    ],
+    projects: [
+        {
+            type: Schema.types.ObjectId, ref: 'Project'
+        }
+    ]
+},
+{
+    toJSON: {
+        virtuals: true,
+    },
+    id: false,
 });
 
 const User = model('User', userSchema);
