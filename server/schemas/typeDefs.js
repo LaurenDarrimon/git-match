@@ -13,33 +13,33 @@ const typeDefs = gql`
     bio: String!
   }
 
-  type Projects {
+  type Project {
     _id: ID!
     name: String!
     repo_link: String!
-    languages: [LanguageSchema!]! 
+    languages: String! 
     deployed_Link: String!
   }
 
-  type LanguageSchema {
-    language: String!
-    count: Number!
+  type Auth {
+    token: ID!
+    user: User
   }
 
   #queries
   type Query {
-    user(userID: ID!): User
-    languages: [Language]
-    projects: [Projects]
+    user[User]
+    user(githubUser: String!): User
+    projects(projectID: String!): [Project]
+    me: User
   }
     
   #mutations 
   type Mutation {
-    login
-    signu
-    addUser
-    addProject
-    addMatch
+    login(githubUser: String!, password: String!): Auth
+    signup(githubUser: String!, password: String!): Auth
+    addProject(projectID: ID!): Project
+    addMatch()
   }
 `;
 
