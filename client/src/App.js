@@ -71,7 +71,7 @@ function App() {
                 element={<Dashboard />}
               />
               <Route 
-                path="/me" 
+                path="profiles/me" 
                 element={<Profile />}
               />
               <Route 
@@ -87,11 +87,11 @@ function App() {
                 element={<CreateProject />}
               />
               <Route 
-                path="/projects/match" 
+                path="/projects/:match" 
                 element={<Match />}
               />
                <Route 
-                path="/users/match" 
+                path="/users/:match" 
                 element={<Match />}
               />
               {/* <Route 
