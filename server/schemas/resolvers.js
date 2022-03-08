@@ -52,10 +52,12 @@ const resolvers = {
         }
         throw new AuthenticationError('You need to be logged in!');
       },
-      
+
       addMatch: async (parent, { githubUser }) => {
         const match = await Matchup.create(args);
         return match;
       },      
     }
 }
+
+module.exports = resolvers;
