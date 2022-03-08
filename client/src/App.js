@@ -15,7 +15,6 @@ import Dashboard from './pages/Dashboard';
 import Project from './pages/Project';
 import Profile from './pages/Profile';
 import CreateProject from './pages/CreateProject';
-import Match from './pages/Match';
 import NotFound from './pages/NotFound';
 import Nav from './components/Nav';
 import Header from './components/Header';
@@ -71,10 +70,6 @@ function App() {
                 element={<Dashboard />}
               />
               <Route 
-                path="profiles/me" 
-                element={<Profile />}
-              />
-              <Route 
                 path="/profiles/:username" 
                 element={<Profile />}
               />
@@ -87,17 +82,9 @@ function App() {
                 element={<CreateProject />}
               />
               <Route 
-                path="/projects/:match" 
-                element={<Match />}
-              />
-               <Route 
-                path="/users/:match" 
-                element={<Match />}
-              />
-              {/* <Route 
-                path="/" 
+                path="*" 
                 element={<NotFound />}
-              /> */}
+              />
             </Routes>
           </div>
           <Footer />
