@@ -7,20 +7,16 @@ const projectSchema = new Schema({
     repo_link: {
         type: String
     },
-    languages: [languageSchema],
     deployed_Link: {
         type: String
-    }
+    },
+    languages: [{
+        type: Schema.Types.ObjectId, ref: 'Language'
+    }]
+
 });
 
-const languageSchema = new Schema({
-    language:{
-        type: String
-    },
-    count: {
-        type: Number
-    }
-});
+
 
 const Project = model('Project', projectSchema);
 
