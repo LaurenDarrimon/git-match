@@ -26,15 +26,13 @@ const typeDefs = gql`
     user: User
   }
 
-  #queries
-  type Query {
-    users: [User]
-    user(githubUser: String!): User
-    projects(projectID: String!): [Project]
-    me: User
-  }
+  # type Query {
+  #   users: [User]
+  #   user(githubUser: String!): User
+  #   projects(projectID: String!): [Project]
+  #   me: User
+  # }
     
-  #mutations 
   # type Mutation {
   #   login(githubUser: String!, password: String!): Auth
   #   signup(githubUser: String!, password: String!): Auth
@@ -43,4 +41,4 @@ const typeDefs = gql`
   # }
 `;
 
-module.export = typeDefs;
+module.exports = typeDefs;
