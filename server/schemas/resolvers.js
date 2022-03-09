@@ -54,7 +54,7 @@ const resolvers = {
       },
 
       addMatch: async (parent, { githubUser }) => {
-        const match = await Matchup.create(args);
+        const match = await Matchup.create(githubUser);
         return match;
       },      
     }
