@@ -29,15 +29,16 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(githubUser: String!): User
-    projects(projectID: String!): [Project]
+    projects(githubUser: String!): [Project]
+    project(projectID: ID!): Project
     me: User
   }
     
   type Mutation {
     login(githubUser: String!, password: String!): Auth
     signup(githubUser: String!, password: String!): Auth
-    # addProject(projectID: ID!): Project
-    # addMatch(githubUser): Auth
+    addProject(projectID: ID!): Project
+    addMatch(githubUser: String!): Auth
   }
 `;
 

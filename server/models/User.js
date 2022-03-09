@@ -1,10 +1,11 @@
 const { Schema, model } = require('mongoose');
 const Project = require('./Project');
+const bcrypt = require('bcrypt');
 
-const emailValidate = function validateEmail(email) {
-    const re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    return re.test(String(email).toLowerCase());
-};
+// const emailValidate = function validateEmail(email) {
+//     const re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+//     return re.test(String(email).toLowerCase());
+// };
 
 
 const userSchema = new Schema({
