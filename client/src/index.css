@@ -1,23 +1,56 @@
 @font-face {
-    font-family: 'LEMON MILK';
-    src: url('/fonts/LEMONMILK-Regular.woff2') format('woff2'),
-        url('fonts/LEMONMILK-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: "LEMONMILK";
+  src: local("LEMONMILK-Regular"),
+    url("./fonts/LEMONMILK-Regular.woff2") format("woff2"),
+    url("./fonts/LEMONMILK-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'LEMON MILK';
-    src: url('fonts/LEMONMILK-Medium.woff2') format('woff2'),
-        url('fonts/LEMONMILK-Medium.woff') format('woff');
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
+  font-family: "LEMONMILK-Medium";
+  src: local("LEMONMILK-Medium"),
+    url("./fonts/LEMONMILK-Medium.woff2") format("woff2"),
+    url("./fonts/LEMONMILK-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,300&display=swap");
+
+/*brand colors*/
+:root {
+    --dark: #121122;
+    --palegrey: #D9D9D9;
+    --coral: #DD1E47;
+    --peach: #F37F7B;
+  }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    
+    font-family: "Montserrat", sans-serif;
+  background-color: var(--dark);
+  color: var(--palegrey);
 }
+
+.gradient {
+    background: rgb(221,30,71);
+    background: linear-gradient(90deg, rgba(221,30,71,1) 0%, rgba(243,127,123,1) 100%);
+    color: var(--palegrey) !important;
+}
+
+.dark {
+    background-color: var(--dark);
+    color: var(--palegrey);
+}
+
+h1, h2, h3, h4 {
+    font-family: "LEMONMILK" !important; 
+}
+
+.btn {
+    border-radius: 0 !important;
+}
+
