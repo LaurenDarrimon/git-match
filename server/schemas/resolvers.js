@@ -4,8 +4,11 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-      user: async (parent, { id }) => {
-        return User.findOne({ where: { id } }); 
+      users: async () => {
+        return User.find().populate('projects');
+      },
+      user: async (parent, { githubUser }) => {
+        return User.findOne({ githubUser }).populate('thoughts'); 
       },
       projects: async (parent, { githubUser }) => {
         const params = githubUser ? { githubUser } : {};
