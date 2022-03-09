@@ -26,7 +26,6 @@ const typeDefs = gql`
     user: User
   }
 
-  #queries
   type Query {
     users: [User]
     user(githubUser: String!): User
@@ -34,13 +33,12 @@ const typeDefs = gql`
     me: User
   }
     
-  #mutations 
-  # type Mutation {
-  #   login(githubUser: String!, password: String!): Auth
-  #   signup(githubUser: String!, password: String!): Auth
-  #   # addProject(projectID: ID!): Project
-  #   addMatch(githubUser): Auth
-  # }
+  type Mutation {
+    login(githubUser: String!, password: String!): Auth
+    signup(githubUser: String!, password: String!): Auth
+    # addProject(projectID: ID!): Project
+    # addMatch(githubUser): Auth
+  }
 `;
 
-module.export = typeDefs;
+module.exports = typeDefs;
