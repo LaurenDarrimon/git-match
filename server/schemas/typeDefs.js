@@ -26,19 +26,19 @@ const typeDefs = gql`
     user: User
   }
 
-  # type Query {
-  #   users: [User]
-  #   user(githubUser: String!): User
-  #   projects(projectID: String!): [Project]
-  #   me: User
-  # }
+  type Query {
+    users: [User]
+    user(githubUser: String!): User
+    projects(projectID: String!): [Project]
+    me: User
+  }
     
-  # type Mutation {
-  #   login(githubUser: String!, password: String!): Auth
-  #   signup(githubUser: String!, password: String!): Auth
-  #   # addProject(projectID: ID!): Project
-  #   addMatch(githubUser): Auth
-  # }
+  type Mutation {
+    login(githubUser: String!, password: String!): Auth
+    signup(githubUser: String!, password: String!): Auth
+    # addProject(projectID: ID!): Project
+    # addMatch(githubUser): Auth
+  }
 `;
 
 module.exports = typeDefs;
