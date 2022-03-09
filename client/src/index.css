@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'LEMON MILK';
+    src: url('/fonts/LEMONMILK-Regular.woff2') format('woff2'),
+        url('fonts/LEMONMILK-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LEMON MILK';
+    src: url('fonts/LEMONMILK-Medium.woff2') format('woff2'),
+        url('fonts/LEMONMILK-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;1,300&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
