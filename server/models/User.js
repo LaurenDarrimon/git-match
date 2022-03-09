@@ -57,7 +57,7 @@ const userSchema = new Schema({
     ],
     projects: [
         {
-            type: Schema.types.ObjectId, ref: 'Project'
+            type: Schema.Types.ObjectId, ref: 'Project'
         }
     ]
 },
