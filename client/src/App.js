@@ -20,6 +20,14 @@ import Nav from './components/Nav';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+import './index.css';
+
+import "./fonts/LEMONMILK-Regular.woff2";
+import "./fonts/LEMONMILK-Regular.woff";
+import "./fonts/LEMONMILK-Medium.woff2";
+import "./fonts/LEMONMILK-Medium.woff";
+
+
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -57,7 +65,7 @@ function App() {
                 path="/"
                 element={<Home />}
               />
-              <Route 
+              {/* <Route 
                 path="/login" 
                 element={<Login />}
               />
@@ -84,7 +92,7 @@ function App() {
               <Route 
                 path="*" 
                 element={<NotFound />}
-              />
+              /> */}
             </Routes>
           </div>
           <Footer />

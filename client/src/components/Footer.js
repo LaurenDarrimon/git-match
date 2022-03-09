@@ -5,7 +5,7 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
+    <footer className="w-100 mt-auto dark p-4">
       <div className="container text-center mb-5">
         {location.pathname !== '/' && (
           <button
@@ -16,15 +16,6 @@ const Footer = () => {
           </button>
         )}
         <h4>
-          Made with{' '}
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-            ❤️
-          </span>{' '}
           David Chou |  Lauren Darrimon | Jose Pascual
         </h4>
       </div>
