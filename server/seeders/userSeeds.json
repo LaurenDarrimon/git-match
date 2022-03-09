@@ -1,16 +1,18 @@
 [
     {
         "name": "Jonas",
-        "githubUser": "plotinusspascual"
+        "githubUser": "plotinusspascual",
+        "password": "password123"
+
     },
     { 
         "name": "Dave",
-        "githubUser": "DazedChou"
-
+        "githubUser": "DazedChou",
+        "password": "password123"
     },
     {
         "name": "Lauren",
-        "githubUser": "laurenDarrimon"
-
+        "githubUser": "laurenDarrimon",
+        "password": "password123"
     }
 ]
