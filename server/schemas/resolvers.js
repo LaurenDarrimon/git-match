@@ -62,8 +62,14 @@ const resolvers = {
         throw new AuthenticationError('You need to be logged in!');
       },
 
-      addMatch: async (parent, { githubUser }) => {
-        const match = await Matchup.create(githubUser);
+      // might not be right, but to create a match, we want to add the target user id onto the
+      // match array of the logged in user.
+      addMatch: async (parent, { ObjectId }, context) => {
+        const match = await User.updateOne( 
+          {githubUser: context.user.githubUser},
+          { $push: { _id:  ObjectId }}
+          )
+        // Matchup.create(githubUser);
         return match;
       },      
     }
