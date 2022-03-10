@@ -11,6 +11,7 @@ const typeDefs = gql`
     location: String
     member_since: String
     bio: String
+    email: String
     projects: [Project]!
   }
 
@@ -31,7 +32,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(githubUser: String!): User
-    allProjects: Projects
+    allProjects: Project
     projects(githubUser: String): [Project]
     project(projectId: ID!): Project
     me: User
@@ -39,7 +40,7 @@ const typeDefs = gql`
     
   type Mutation {
     login(githubUser: String!, password: String!): Auth
-    signup(githubUser: String!, password: String!): Auth
+    signup(githubUser: String!, email: String!, password: String!): Auth
     addProject(name: String!, githubUser: String!): Project
     addMatch(githubUser: String!): Auth
   }

@@ -47,8 +47,8 @@ const resolvers = {
         return { token, user };
       },
 
-      signup: async (parent, { githubUser, password }) => {
-        const user = await User.create({ githubUser, password });
+      signup: async (parent, { githubUser, email, password }) => {
+        const user = await User.create({ githubUser, email, password });
         const token = signToken(user);
         return { token, user };
       },

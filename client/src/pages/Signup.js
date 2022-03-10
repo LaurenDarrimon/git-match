@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER, ADD_PROJECT} from '../utils/mutations';
-import { API } from '../utils/fetch'
+import  API  from '../utils/fetch'
 
 import Auth from '../utils/auth';
 
@@ -11,7 +11,7 @@ const Signup = () => {
     const [formState, setFormState] = useState({
         githubUser: '',
         password: '',
-
+        email: ''
     });
     const [addUser, { error, userData }] = useMutation(ADD_USER);
     const [addProject, { err, projectData }] = useMutation(ADD_PROJECT);
@@ -27,16 +27,16 @@ const Signup = () => {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState);
 
         try {
-            const fetchedUser = API.fetchUser(formState.githubUser);
-            const fetchedProjects = API.fetchedStarred(formState.githubUser);
+            const fetchedUser = await API.fetchUser(formState.githubUser);
+            console.log({...formState, ...fetchedUser});
+            // const fetchedProjects = API.fetchStarred(formState.githubUser);
             const { userData } = await addUser({
                 variables: { 
                   ...formState,
-                   ...fetchedUser,
-                   projects: fetchedProjects 
+                  //  ...fetchedUser
+                  //  projects: fetchedProjects 
                 }
             });
             
@@ -74,14 +74,14 @@ const Signup = () => {
                       value={formState.githubUser}
                       onChange={handleChange}
                     />
-                    {/* <input
+                    <input
                       className="form-input"
                       placeholder="Your email"
                       name="email"
                       type="email"
                       value={formState.email}
                       onChange={handleChange}
-                    /> */}
+                    />
                     <input
                       className="form-input"
                       placeholder="******"
