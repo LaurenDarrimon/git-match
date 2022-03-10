@@ -18,7 +18,6 @@ const projectSchema = new Schema({
       required: true,
       trim: true
     }  
-
 });
 
 
