@@ -12,7 +12,7 @@ const resolvers = {
       },
       projects: async (parent, { githubUser }) => {
         const params = githubUser ? { githubUser } : {};
-        return Project.find(params);
+        return Project.find({ githubUser: githubUser });
       },
       project: async (parent, { projectId }) => {
         return Project.findOne({ _id: projectId });
