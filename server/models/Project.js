@@ -3,7 +3,9 @@ const Language = require('./Language');
 
 const projectSchema = new Schema({
     githubUser: {
-        type: String
+        type: String,
+        required: true,
+        trim: true
     },
     name: {
         type: String
