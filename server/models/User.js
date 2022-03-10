@@ -1,10 +1,11 @@
 const { Schema, model } = require('mongoose');
 const Project = require('./Project');
+const bcrypt = require('bcrypt');
 
-const emailValidate = function validateEmail(email) {
-    const re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-    return re.test(String(email).toLowerCase());
-};
+// const emailValidate = function validateEmail(email) {
+//     const re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+//     return re.test(String(email).toLowerCase());
+// };
 
 
 const userSchema = new Schema({
@@ -57,7 +58,7 @@ const userSchema = new Schema({
     ],
     projects: [
         {
-            type: Schema.types.ObjectId, ref: 'Project'
+            type: Schema.Types.ObjectId, ref: 'Project'
         }
     ]
 },
@@ -67,6 +68,19 @@ const userSchema = new Schema({
     },
     id: false,
 });
+
+userSchema.pre('save', async function (next) {
+    if (this.isNew || this.isModified('password')) {
+      const saltRounds = 10;
+      this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+  
+    next();
+  });
+
+userSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 
 const User = model('User', userSchema);
 
