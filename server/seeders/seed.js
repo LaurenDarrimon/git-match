@@ -11,12 +11,12 @@ db.once('open', async () => {
     await User.create(userSeeds);
 
     for (let i = 0; i < projectSeeds.length; i++) {
-      const { _id, projectPoster } = await Project.create(projectSeeds[i]);
+      const { _id, githubUser } = await Project.create(projectSeeds[i]);
       const user = await User.findOneAndUpdate(
-        { githubUser: projectPoster },
+        { githubUser: githubUser  },
         {
           $addToSet: {
-            project: _id,
+            projects: _id,
           },
         }
       );
