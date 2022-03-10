@@ -3,21 +3,21 @@
         "name": "Don't Fund Me",
         "repo_link": "https://github.com/PentaZoned/DontFundMe",
         "deployed_Link": "https://vast-chamber-35721.herokuapp.com/",
-        "project_owner": "plotinusspascual"
+        "githubUser": "plotinusspascual"
 
     }, 
     {
         "name": "Tech Blog",
         "repo_link": "https://github.com/LaurenDarrimon/tech-blog",
         "deployed_Link": "https://vast-chamber-35721.herokuapp.com/",
-        "project_owner": "DazedChou"
+        "githubUser": "DazedChou"
 
     },
     {
         "name": "Neighborgood!",
         "repo_link": "https://github.com/LaurenDarrimon/community-share",
         "deployed_Link": "https://hidden-forest-09542.herokuapp.com/",
-        "project_owner": "laurenDarrimon"
+        "githubUser": "laurenDarrimon"
     }
 
 ]
