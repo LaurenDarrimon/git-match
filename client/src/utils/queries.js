@@ -44,6 +44,32 @@ export const QUERY_SINGLE_USER = gql`
 
 export const QUERY_USER_PROJECTS = gql`
   query userProjects($githubUser: String!) {
-    project
+    projects(githubUser: $githubUser){
+      name
+      description
+      repo_link
+      deployed_link
+    }
   }
+`;
+
+export const QUERY_ONE_PROJECT = gql`
+  query userProjects($projectId: ID!) {
+    project(projectId: $projectId){
+      name
+      description
+      repo_link
+      deployed_link
+    }
+  }
+`;
+
+export const QUERY_ALL_PROJECTS = gql`
+  query allProjects
+    projects {
+      name
+      description
+      repo_link
+      deployed_link
+    }
 `;
