@@ -65,7 +65,7 @@ function App() {
                 path="/"
                 element={<Home />}
               />
-              {/* <Route 
+              <Route 
                 path="/login" 
                 element={<Login />}
               />
@@ -73,6 +73,7 @@ function App() {
                 path="/signup" 
                 element={<Signup />}
               />
+               {/*
                <Route 
                 path="/me" 
                 element={<Dashboard />}

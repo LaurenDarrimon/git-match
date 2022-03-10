@@ -2,9 +2,10 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 
 //import Dashboard from './pages/Dashboard'
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import Nav from '../components/Nav';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
+// import Nav from '../components/Nav';
+// import Login from './pages/Login';
 
 import '../index.css';
 
@@ -26,7 +27,7 @@ const Home = () => {
           { loggedIn ? (
             <div> <h2>Dashboard goes here</h2> </div>
           ) : (
-            <div> <h2>Login screen goes here</h2> </div>
+            <div> <h2>Login buttons go here</h2> </div>
           )}
         </div>
       </div>
