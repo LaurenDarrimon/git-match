@@ -40,8 +40,9 @@ const Signup = () => {
                 }
             });
             
+            //FIX THIS
         
-            Auth.login(userData.addUser.token);
+            Auth.login(userData.signup.token);
 
             
             // const { projectData } = await addProject({
