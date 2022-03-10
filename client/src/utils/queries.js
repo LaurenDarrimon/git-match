@@ -65,11 +65,12 @@ export const QUERY_ONE_PROJECT = gql`
 `;
 
 export const QUERY_ALL_PROJECTS = gql`
-  query allProjects
+  query allProjects {
     projects {
       name
       description
       repo_link
       deployed_link
     }
+  }  
 `;
