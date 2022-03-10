@@ -12,7 +12,12 @@ const projectSchema = new Schema({
     },
     languages: [{
         type: Schema.Types.ObjectId, ref: 'Language'
-    }]
+    }],
+    project_owner: {
+      type: String,
+      required: true,
+      trim: true
+    }  
 
 });
 

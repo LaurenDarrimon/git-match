@@ -8,14 +8,20 @@ const resolvers = {
         return User.find().populate('projects');
       },
       user: async (parent, { githubUser }) => {
-        return User.findOne({ githubUser }).populate('thoughts'); 
+        return User.findOne({ githubUser }).populate('projects');
       },
-      projects: async (parent, { githubUser }) => {
+      projects: async (parent, { githubUser}) => {
         const params = githubUser ? { githubUser } : {};
         return Project.find(params);
       },
-      project: async (parent, { projectID }) => {
-        return Project.findOne({ _id: projectID });
+      project: async (parent, { projectId }) => {
+        return Project.findOne({ _id: projectId });
+      },
+      me: async (parent, args, context) => {
+        if (context.user) {
+          return User.findOne({ _id: context.user._id }).populate('projects');
+        }
+        throw new AuthenticationError('You need to be logged in!');
       },
     },
 

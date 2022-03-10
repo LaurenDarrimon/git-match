@@ -61,12 +61,6 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId, ref: 'Project'
         }
     ]
-},
-{
-    toJSON: {
-        virtuals: true,
-    },
-    id: false,
 });
 
 userSchema.pre('save', async function (next) {
