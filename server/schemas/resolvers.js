@@ -10,7 +10,7 @@ const resolvers = {
       user: async (parent, { githubUser }) => {
         return User.findOne({ githubUser }).populate('projects');
       },
-      projects: async (parent, { githubUser}) => {
+      projects: async (parent, { githubUser }) => {
         const params = githubUser ? { githubUser } : {};
         return Project.find(params);
       },

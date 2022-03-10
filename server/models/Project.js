@@ -11,6 +11,7 @@ const projectSchema = new Schema({
         type: String
     },
     languages: [{
+<<<<<<< HEAD
         type: Schema.Types.ObjectId, ref: 'Language'
     }],
     project_owner: {
@@ -18,6 +19,10 @@ const projectSchema = new Schema({
       required: true,
       trim: true
     }  
+=======
+        type: Schema.types.ObjectId, ref: 'Language'
+    }]
+>>>>>>> 0909bdc39e920edef1154223cb8c24f439c9909c
 
 });
 
