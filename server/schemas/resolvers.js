@@ -54,8 +54,9 @@ const resolvers = {
       },
 
       // will add info later, not sure what we are doing with this yet
-      addProject: async (parent, { name, githubUser }) => {
-        const project = await Project.create({ name, githubUser });
+      //neme is repo name
+      addProject: async (parent, { githubUser, name, description, repo_link }) => {
+        const project = await Project.create({ githubUser, name, description, repo_link });
 
         await User.findOneAndUpdate(
           { githubUser: githubUser },

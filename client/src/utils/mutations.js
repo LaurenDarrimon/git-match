@@ -24,3 +24,15 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_PROJECT = gql`
+  mutation addProject($githubUser: String!, $name: String!, $description: String, $repo_link: String) {
+    addProject(githubUser: $githubUser, name: $name, description: $description, repo_link: $repo_link){
+      _id
+      githubUser
+      name
+      description
+      repo_link
+    }
+  }
+`
