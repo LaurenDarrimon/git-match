@@ -19,7 +19,7 @@ const typeDefs = gql`
     name: String
     repo_link: String
     languages: String 
-    deployed_Link: String
+    deployed_link: String
     githubUser: String
   }
 
@@ -31,6 +31,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(githubUser: String!): User
+    allProjects: Projects
     projects(githubUser: String): [Project]
     project(projectId: ID!): Project
     me: User

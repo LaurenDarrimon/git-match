@@ -2,10 +2,10 @@ const { Schema, model } = require('mongoose');
 const Project = require('./Project');
 const bcrypt = require('bcrypt');
 
-// const emailValidate = function validateEmail(email) {
-//     const re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-//     return re.test(String(email).toLowerCase());
-// };
+const emailValidate = function validateEmail(email) {
+    const re = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+    return re.test(String(email).toLowerCase());
+};
 
 
 const userSchema = new Schema({
@@ -20,12 +20,12 @@ const userSchema = new Schema({
         min: 6,
     },
     
-    // email: {
-    //     type: String, 
-    //     required: true,
-    //     trim: true,
-    //     validate: [emailValidate, 'invalid Email']
-    // },
+    email: {
+        type: String, 
+        required: true,
+        trim: true,
+        validate: [emailValidate, 'invalid Email']
+    },
     name: {
         type: String,
         trim: true,
@@ -51,7 +51,7 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId, ref: 'User' 
         }
     ],
-    mutuals: [
+    match: [
         { 
             type: Schema.Types.ObjectId, ref: 'User' 
         }

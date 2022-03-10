@@ -11,7 +11,7 @@ import '../index.css';
 
 const Home = () => {
 
-    let loggedIn; 
+  let loggedIn = localStorage.getItem('id_token');
 
   return (
       //if logged in display dashboard, otherwise display home

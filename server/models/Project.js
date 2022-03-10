@@ -1,28 +1,28 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const Language = require("./Language");
 
 const projectSchema = new Schema({
-    name: {
-        type: String
-    },
-    repo_link: {
-        type: String
-    },
-    deployed_Link: {
-        type: String
-    },
-    languages: [{
-        type: Schema.Types.ObjectId, ref: 'Language'
-    }],
-    githubUser: {
-      type: String,
-      required: true,
-      trim: true
-    }  
+  githubUser: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  name: {
+    type: String,
+  },
+  description: { type: String },
+  repo_link: {
+    type: String,
+  },
+  deployed_link: {
+    type: String,
+  },
+  languages: [Language],
+  //     {
+  //     type: Schema.types.ObjectId, ref: 'Language'
+  // }
 });
 
-
-
-const Project = model('Project', projectSchema);
+const Project = model("Project", projectSchema);
 
 module.exports = Project;
-
