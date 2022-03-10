@@ -12,7 +12,7 @@ const resolvers = {
       },
       projects: async (parent, { githubUser }) => {
         const params = githubUser ? { githubUser } : {};
-        return Project.find({ githubUser: githubUser });
+        return Project.find(params);
       },
       project: async (parent, { projectId }) => {
         return Project.findOne({ _id: projectId });
@@ -51,15 +51,15 @@ const resolvers = {
       },
 
       // will add info later, not sure what we are doing with this yet
-      addProject: async (parent, { name }, context) => {
-        if (context.user) {
-          const project = await Project.create({
-            name,
-            repo_link: context.user.username,
-          });
-          return project;
-        }
-        throw new AuthenticationError('You need to be logged in!');
+      addProject: async (parent, { name, githubUser }) => {
+        const project = await Project.create({ name, githubUser });
+
+        await User.findOneAndUpdate(
+          { githubUser: githubUser },
+          { $addToSet: { projects: project._id } }
+        );
+
+        return project;
       },
 
       addMatch: async (parent, { githubUser }) => {
