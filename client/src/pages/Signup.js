@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
+import { ADD_USER, ADD_PROJECT} from '../utils/mutations';
+import { API } from '../utils/fetch'
 
 import Auth from '../utils/auth';
 
@@ -12,8 +13,9 @@ const Signup = () => {
         password: '',
 
     });
-    const [addProfile, { error, data }] = useMutation(ADD_USER);
-
+    const [addUser, { error, userData }] = useMutation(ADD_USER);
+    const [addProject, { err, projectData }] = useMutation(ADD_PROJECT);
+  
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -28,11 +30,24 @@ const Signup = () => {
         console.log(formState);
 
         try {
-            const { data } = await addProfile({
-                variables: { ...formState },
+            const fetchedUser = API.fetchUser(formState.githubUser);
+            const fetchedProjects = API.fetchedStarred(formState.githubUser);
+            const { userData } = await addUser({
+                variables: { 
+                  ...formState,
+                   ...fetchedUser,
+                   projects: fetchedProjects 
+                }
             });
+            
+        
+            Auth.login(userData.addUser.token);
 
-            Auth.login(data.addProfile.token);
+            
+            // const { projectData } = await addProject({
+            //   variables:
+            // })
+
         } catch (e) {
             console.error(e)
         }
@@ -44,7 +59,7 @@ const Signup = () => {
             <div className="card">
               <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
               <div className="card-body">
-                {data ? (
+                {userData ? (
                   <p>
                     Success! You may now head{' '}
                     <Link to="/">back to the homepage.</Link>
