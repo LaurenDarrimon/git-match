@@ -11,7 +11,7 @@ const projectSchema = new Schema({
         type: String
     },
     languages: [{
-        type: Schema.Types.ObjectId, ref: 'Language'
+        type: Schema.types.ObjectId, ref: 'Language'
     }]
 
 });
