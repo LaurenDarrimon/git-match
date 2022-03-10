@@ -38,7 +38,7 @@ const typeDefs = gql`
     login(githubUser: String!, password: String!): Auth
     signup(githubUser: String!, password: String!): Auth
     addProject(projectID: ID!): Project
-    addMatch(githubUser: String!): Auth
+    addMatch(githubUser: String!): User
   }
 `;
 

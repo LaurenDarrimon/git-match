@@ -51,7 +51,7 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId, ref: 'User' 
         }
     ],
-    mutuals: [
+    match: [
         { 
             type: Schema.Types.ObjectId, ref: 'User' 
         }
