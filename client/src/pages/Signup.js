@@ -13,7 +13,7 @@ const Signup = () => {
         password: '',
         email: ''
     });
-    const [addUser, { error, userData }] = useMutation(ADD_USER);
+    const [signup, { error, userData }] = useMutation(ADD_USER);
     const [addProject, { err, projectData }] = useMutation(ADD_PROJECT);
   
     const handleChange = (event) => {
@@ -32,23 +32,18 @@ const Signup = () => {
             const fetchedUser = await API.fetchUser(formState.githubUser);
             console.log({...formState, ...fetchedUser});
             // const fetchedProjects = API.fetchStarred(formState.githubUser);
-            const { userData } = await addUser({
+            const { userData } = await signup({
                 variables: { 
                   ...formState,
                   //  ...fetchedUser
                   //  projects: fetchedProjects 
                 }
-            });
-            
-            //FIX THIS
-        
-            Auth.login(userData.signup.token);
-
-            
+            });           
+           //FIX THIS       
+            Auth.login(userData.signup.token);           
             // const { projectData } = await addProject({
             //   variables:
             // })
-
         } catch (e) {
             console.error(e)
         }

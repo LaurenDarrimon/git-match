@@ -19,7 +19,6 @@ export const ADD_USER = gql`
       user {
         _id
         githubUser
-        email
       }
     }
   }
