@@ -9,9 +9,9 @@ const API = {
       axios.get(`https://api.github.com/users/${user}`)
         .then((res) => {
           //Populate the database
-          console.log('res', res);
+          // console.log('res', res);
           const user = res.data;
-          console.log('user',user);
+          // console.log('user',user);
           const results = {
             name: user.name,
             avatar: user.avatar_url,
@@ -31,25 +31,25 @@ const API = {
     return new Promise((resolve, reject) => {
     axios.get(`https://api.github.com/users/${user}/starred`)
       .then((res) => {
+        // console.log(res)
         const projects = res.data;
-        // console.log('projects',projects);
+        // console.log('projects', projects);
         const results = projects?.map((project) => {
            return {
             name: project.name,
             description: project.description,
             repo_link: project.html_url
-
           }
         });
-        console.log('results',results);
+        // console.log(results);
         resolve(results)
       }).catch((err) => reject(err));
     })
   },
+  
 
   //fetch a repo's programming languagesfrom GitHUb API
   fetchLanguage: (user, repo) => {
-
     axios.get(`https://api.github.com/repos/${user}/${repo}/languages`)
       .then((res) => {
         return res;
