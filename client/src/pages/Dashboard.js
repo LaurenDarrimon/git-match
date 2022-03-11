@@ -6,4 +6,10 @@ const Dashboard = () => {
     const [toggle, setToggle] = useState({
         
     })
-}
+
+    return (
+        <h5>Dashboard aint shit</h5>
+    )
+};
+
+export default Dashboard

@@ -77,12 +77,12 @@ function App() {
                 path="/profiles/:username" 
                 element={<Profile />}
               />
-               {/*
+               
                <Route 
                 path="/me" 
                 element={<Dashboard />}
               />
-              <Route 
+              {/* <Route 
                 path="/profiles/:username" 
                 element={<Profile />}
               />
