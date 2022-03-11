@@ -11,13 +11,26 @@ const Dashboard = () => {
     });
     
     const [addProject, { error, data }] = useMutation(ADD_PROJECT);
-    const fetchedProjects = API.fetchStarred(Auth.getProfile().data.githubUser);
+
+    let fetchedProjects = [];
+
+    const projectFetcher= async () => {
+
+        fetchedProjects =  await API.fetchStarred(Auth.getProfile().data.githubUser);
+        console.log(fetchedProjects);
+        return 
+    }
+
+    projectFetcher();
+    console.log("fetchedProjects");
     console.log(fetchedProjects);
+   
+
 
     return (
         <div>
             <h5>{Auth.getProfile().data.githubUser} Dashboard</h5>
-            <h4></h4>
+            <h4>Projects/Users Matches</h4>
         </div>
     )
 };
