@@ -31,9 +31,8 @@ const API = {
     return new Promise((resolve, reject) => {
     axios.get(`https://api.github.com/users/${user}/starred`)
       .then((res) => {
-        console.log(res)
         const projects = res.data;
-        console.log('projects',projects);
+        // console.log('projects',projects);
         const results = projects?.map((project) => {
            return {
             name: project.name,
@@ -42,7 +41,7 @@ const API = {
 
           }
         });
-        console.log(results);
+        console.log('results',results);
         resolve(results)
       }).catch((err) => reject(err));
     })
