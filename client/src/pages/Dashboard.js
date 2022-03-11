@@ -12,19 +12,24 @@ const Dashboard = () => {
     
     const [addProject, { error, data }] = useMutation(ADD_PROJECT);
 
-    let fetchedProjects = [];
-
     const projectFetcher= async () => {
 
-        fetchedProjects =  await API.fetchStarred(Auth.getProfile().data.githubUser);
-        console.log(fetchedProjects);
-        return 
+        const fetchedProjects =  await API.fetchStarred(Auth.getProfile().data.githubUser);
+        return fetchedProjects
     }
 
-    projectFetcher();
-    console.log("fetchedProjects");
-    console.log(fetchedProjects);
-   
+    const projectPromise = projectFetcher();
+    projectPromise.then(function(result) {
+        const projectArray = result;
+        console.log('projectarray',projectArray);
+    })
+    // const CreateProject = projectArray.map((project,index) => {
+    //     const { data } = addProject({
+    //         variables: {
+    //             ...projectArray[index]
+    //         }
+    //     })
+    // })
 
 
     return (
