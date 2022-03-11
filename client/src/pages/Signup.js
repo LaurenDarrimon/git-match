@@ -31,15 +31,15 @@ const Signup = () => {
         try {
             const fetchedUser = await API.fetchUser(formState.githubUser);
             console.log({...formState, ...fetchedUser});
-            // const fetchedProjects = API.fetchStarred(formState.githubUser);
+            //const fetchedProjects = API.fetchStarred(formState.githubUser);
             const { data } = await signup({
                 variables: { 
                   ...formState,
-                  // ...fetchedUser
+                  ...fetchedUser
                   //  projects: fetchedProjects 
                 },
             });                  
-            console.log(...data);
+            console.log(data);
             Auth.login(data.signup.token);           
             // const { projectData } = await addProject({
             //   variables:
@@ -56,6 +56,7 @@ const Signup = () => {
               <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
               <div className="card-body">
                 {data ? (
+                  //  window.location.assign('/me');
                   <p>
                     Success! You may now head{' '}
                     <Link to="/">back to the homepage.</Link>
