@@ -43,6 +43,8 @@ const typeDefs = gql`
     signup(githubUser: String!, email: String!, password: String!): Auth
     addProject(name: String!, githubUser: String!): Project
     addMatch(githubUser: String!): Auth
+
+    removeUser(githubUser: ID!): User
   }
 `;
 
