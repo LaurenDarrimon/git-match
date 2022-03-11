@@ -13,7 +13,7 @@ const Signup = () => {
         password: '',
         email: ''
     });
-    const [signup, { error, userData }] = useMutation(ADD_USER);
+    const [signup, { error, data }] = useMutation(ADD_USER);
     const [addProject, { err, projectData }] = useMutation(ADD_PROJECT);
   
     const handleChange = (event) => {
@@ -32,15 +32,15 @@ const Signup = () => {
             const fetchedUser = await API.fetchUser(formState.githubUser);
             console.log({...formState, ...fetchedUser});
             // const fetchedProjects = API.fetchStarred(formState.githubUser);
-            const { userData } = await signup({
+            const { data } = await signup({
                 variables: { 
-                  ...formState
-                  //  ...fetchedUser
+                  ...formState,
+                  // ...fetchedUser
                   //  projects: fetchedProjects 
                 },
-            });           
-           //FIX THIS       
-            Auth.login(userData.signup.token);           
+            });                  
+            console.log(...data);
+            Auth.login(data.signup.token);           
             // const { projectData } = await addProject({
             //   variables:
             // })
@@ -55,7 +55,7 @@ const Signup = () => {
             <div className="card">
               <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
               <div className="card-body">
-                {userData ? (
+                {data ? (
                   <p>
                     Success! You may now head{' '}
                     <Link to="/">back to the homepage.</Link>
