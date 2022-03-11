@@ -82,7 +82,9 @@ function App() {
                 path="/me" 
                 element={<Dashboard />}
               />
-              {/* <Route 
+
+              {/*
+              <Route 
                 path="/profiles/:username" 
                 element={<Profile />}
               />
