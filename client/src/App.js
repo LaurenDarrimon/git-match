@@ -82,6 +82,7 @@ function App() {
                 path="/me" 
                 element={<Dashboard />}
               />
+
               {/*
               <Route 
                 path="/profiles/:username" 
