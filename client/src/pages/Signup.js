@@ -34,10 +34,10 @@ const Signup = () => {
             // const fetchedProjects = API.fetchStarred(formState.githubUser);
             const { userData } = await signup({
                 variables: { 
-                  ...formState,
+                  ...formState
                   //  ...fetchedUser
                   //  projects: fetchedProjects 
-                }
+                },
             });           
            //FIX THIS       
             Auth.login(userData.signup.token);           
