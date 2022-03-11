@@ -28,9 +28,11 @@ const API = {
   },
   //fetch a user starred repos from GitHUb API
   fetchStarred: (user) => {
+    return new Promise((resolve, reject) => {
     axios.get(`https://api.github.com/users/${user}/starred`)
       .then((res) => {
         const projects = res.data.results;
+        console.log('projects',projects);
         const results = projects.map((project) => {
           return {
             name: project.name,
@@ -38,9 +40,11 @@ const API = {
             repo_link: project.html_url
 
           }
-        })
-        return results;
-      })
+        });
+        console.log('results',results);
+        resolve(results)
+      }).catch((err) => reject(err));
+    })
   },
 
   //fetch a repo's programming languagesfrom GitHUb API
