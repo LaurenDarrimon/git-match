@@ -26,7 +26,7 @@ const typeDefs = gql`
 
   type Auth {
     token: ID!
-    githubUser: User
+    user: User
   }
 
   type Query {
