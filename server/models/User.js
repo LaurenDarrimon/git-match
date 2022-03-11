@@ -60,7 +60,17 @@ const userSchema = new Schema({
         {
           type: Schema.Types.ObjectId, ref: 'Project'
         }
-    ]
+    ],
+    swipeProject:  [
+        {
+          type: Schema.Types.ObjectId, ref: 'Project'
+        }
+    ],
+    project_match:  [
+        {
+          type: Schema.Types.ObjectId, ref: 'Project'
+        }
+    ],
 });
 
 // set up pre-save middleware to create password

@@ -21,7 +21,7 @@ const Header = () => {
         <div>
           {Auth.loggedIn() ? (
             <>
-              <span>Hey there, {Auth.getProfile().data.username}!</span>
+              <span>Hey there, {Auth.getProfile().data.githubUser}!</span>
               <button className="btn btn-lg m-2 gradient" onClick={logout}>
                 Logout
               </button>
