@@ -38,7 +38,10 @@ const Signup = () => {
                   ...fetchedUser
                   //  projects: fetchedProjects 
                 },
-            });                  
+            });        
+            
+
+            
             console.log(data);
             Auth.login(data.signup.token);           
             // const { projectData } = await addProject({

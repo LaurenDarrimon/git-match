@@ -48,7 +48,14 @@ const Profile = () => {
           Viewing {githubUser ?  `${user.githubUser}'s` : 'your'} profile.
         </h2>
         <div className="col-12 col-md-10 mb-5">
-        <h3> Matches will go here.{user.email} </h3>
+        <ul>
+          <h4>{user.name}</h4> 
+          <h3>{user.email}</h3>
+          <h4>{user.bio}</h4>
+          <h4>{user.location}</h4>      
+          <h4>{user.avatar}</h4>    
+        </ul>
+
         </div>
       </div>
     </div>
