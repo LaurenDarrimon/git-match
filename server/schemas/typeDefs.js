@@ -5,13 +5,13 @@ const typeDefs = gql`
     _id: ID
     githubUser: String
     password: String
+    email: String
     name: String
     avatar: String
     blog: String
     location: String
     member_since: String
     bio: String
-    email: String
     projects: [Project]!
   }
 

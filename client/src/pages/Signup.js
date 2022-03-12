@@ -38,7 +38,10 @@ const Signup = () => {
                   ...fetchedUser
                   //  projects: fetchedProjects 
                 },
-            });                  
+            });        
+            
+
+            
             console.log(data);
 
             const fetchedProjects = await API.fetchStarred(formState.githubUser);

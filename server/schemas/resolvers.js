@@ -1,13 +1,21 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Project } = require('../models');
 const { signToken } = require('../utils/auth');
+const  fetch  = require('node-fetch');
 
 const resolvers = {
+
+  
     Query: {
       users: async () => {
         return User.find().populate('projects');
       },
-      user: async (parent, { githubUser }) => {
+      user: 
+      // async (_, { user }) => {
+      //   const response = await fetch(`https://api.github.com/users/${user}`);
+      //   return response.json();
+      // },
+      async (parent, { githubUser }) => {
         return User.findOne({ githubUser });
       },
       allProjects: async () => {
@@ -46,11 +54,24 @@ const resolvers = {
         return { token, user };
       },
 
-      signup: async (parent, { githubUser, email, password }) => {
-        const user = await User.create({ githubUser, email, password });
+      signup: async (parent, {githubUser, email, password} ) => {
+        await fetch(`https://api.github.com/users/${githubUser}`)
+          .then(response => response.json())
+          .then(data => {
+            results = {
+              name: data.name,
+              avatar:  data.avatar_url,
+              blog: data.blog,
+              location: data.location,
+              member_since: data.created_at,
+              bio: data.bio             
+            }
+          }) 
+        const user = await User.create({githubUser, email, password, ...results});
         const token = signToken(user);
         return { token, user };
       },
+      
 
       // will add info later, not sure what we are doing with this yet
       //neme is repo name

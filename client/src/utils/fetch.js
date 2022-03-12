@@ -1,6 +1,4 @@
-
 import axios from 'axios';
-
 
 const API = {
   //fetch the users info from GitHUb API
@@ -18,11 +16,9 @@ const API = {
             blog: user.blog,
             location: user.location,
             member_since: user.created_at,
-            bio: user.bio
+            bio: user.bio,
           };
           resolve(results);
-
-
         }).catch((err) => reject(err));
     });
   },
