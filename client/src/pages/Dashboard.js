@@ -53,7 +53,6 @@ const Dashboard = () => {
   //     })
   // })
 
-
   return (
     <div>
       <h5>{Auth.getProfile().data.githubUser} Dashboard</h5>
