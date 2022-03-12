@@ -8,7 +8,7 @@ const resolvers = {
   
     Query: {
       users: async () => {
-        return User.find().populate('projects');
+        return User.find()
       },
       user: async (parent, { githubUser }) => {
         return User.findOne({ githubUser });
@@ -73,6 +73,8 @@ const resolvers = {
                   repo_link: data[i].html_url,            
                 }
                   arr.push(projectInfo);
+                  
+
                 }
                 results.projects = arr;
                 console.log(results);

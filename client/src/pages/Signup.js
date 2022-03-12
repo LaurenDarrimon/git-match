@@ -29,14 +29,14 @@ const Signup = () => {
         event.preventDefault();
 
         try {
-            const fetchedUser = await API.fetchUser(formState.githubUser);
-            console.log({...formState, ...fetchedUser});
+            // const fetchedUser = await API.fetchUser(formState.githubUser);
+            // console.log({...formState, ...fetchedUser});
 
             const { data } = await signup({
                 variables: { 
                   ...formState,
-                  ...fetchedUser
-                  //  projects: fetchedProjects 
+                  //...fetchedUser
+                  // projects: fetchedProjects 
                 },
             });        
             
@@ -44,18 +44,18 @@ const Signup = () => {
             
             console.log(data);
 
-            const fetchedProjects = await API.fetchStarred(formState.githubUser);
-            console.log(fetchedProjects);
-            for (let i = 0; i<fetchedProjects.length; i++) {
-              console.log(i,fetchedProjects[i]);
-              const myObj = {...fetchedProjects[i], githubUser: formState.githubUser};
-              console.log('myobj');
-              console.log(myObj);
-              // const { projectData } = addProject({
-              //   variables: myObj
-              // });
-              // console.log('projectData', projectData);
-            }
+            // const fetchedProjects = await API.fetchStarred(formState.githubUser);
+            // console.log(fetchedProjects);
+            // for (let i = 0; i<fetchedProjects.length; i++) {
+            //   console.log(i,fetchedProjects[i]);
+            //   const myObj = {...fetchedProjects[i], githubUser: formState.githubUser};
+            //   console.log('myobj');
+            //   console.log(myObj);
+            //   const { projectData } = addProject({
+            //     variables: myObj
+            //   });
+            //   console.log('projectData', projectData);
+            // }
 
 
             Auth.login(data.signup.token);
