@@ -21,7 +21,7 @@ const Dashboard = () => {
     API.fetchStarred(Auth.getProfile().data.githubUser)
       .then(async (response) => {
         const data = await response;
-        console.log(data[0].name);
+        // console.log(data[0].name);
         // project name
         if (data && data[0].name) {
           setProjectName(data[0].name);

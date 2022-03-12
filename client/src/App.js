@@ -75,7 +75,7 @@ function App() {
                 element={<Signup />}
               />
                <Route 
-                path="/profiles/:username" 
+                path="/profiles/:githubUser" 
                 element={<Profile />}
               />
                
