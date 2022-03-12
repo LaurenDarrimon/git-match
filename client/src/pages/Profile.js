@@ -5,19 +5,25 @@ import { useQuery } from '@apollo/client';
 import Match from '../components/Match';
 
 import { QUERY_SINGLE_USER, QUERY_ME } from '../utils/queries';
+import ProjectList from '../components/ProjectList';
+
 
 import Auth from '../utils/auth';
 
 const Profile = () => {
-  const { username: userParam } = useParams();
+  const { githubUser: userParam } = useParams();
 
-  const { loading, data } = useQuery(userParam ? QUERY_SINGLE_USER : QUERY_ME, {
-    variables: { username: userParam },
-  });
+  const { loading, data } = useQuery(
+    userParam ? QUERY_SINGLE_USER : QUERY_ME, 
+    {
+      variables: { githubUser: userParam },
+    }
+  );
 
-  const user = data?.me || data?.user || {};
+  const user = data?.me || data?.githubUser || {};
+  
   // navigate to personal profile page if username is yours
-  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+  if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
     return <Navigate to="/me" />;
   }
 
@@ -25,7 +31,7 @@ const Profile = () => {
     return <div>Loading...</div>;
   }
 
-  if (!user?.username) {
+  if (!user?.githubUser) {
     return (
       <h4>
         You need to be logged in to see this. Use the navigation links above to
@@ -37,6 +43,7 @@ const Profile = () => {
   return (
     <div>
       <div className="flex-row justify-center mb-3">
+        {user.avatar}
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.githubUser}'s` : 'your'} profile.
         </h2>
