@@ -57,7 +57,7 @@ const resolvers = {
       addProject: async (parent, { githubUser, name, description, repo_link }) => {
         const project = await Project.create({ githubUser, name, description, repo_link });
 
-        await User.findOneAndUpdate(
+        User.findOneAndUpdate(
           { githubUser: githubUser },
           { $addToSet: { projects: project._id } }
         );

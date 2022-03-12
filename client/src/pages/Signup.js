@@ -14,7 +14,7 @@ const Signup = () => {
         email: ''
     });
     const [signup, { error, data }] = useMutation(ADD_USER);
-    
+    const [addProject] = useMutation(ADD_PROJECT)
   
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -40,9 +40,25 @@ const Signup = () => {
                 },
             });                  
             console.log(data);
-            Auth.login(data.signup.token);           
+
+            const fetchedProjects = await API.fetchStarred(formState.githubUser);
+            console.log(fetchedProjects);
+            for (let i = 0; i<fetchedProjects.length; i++) {
+              console.log(i,fetchedProjects[i]);
+              const myObj = {...fetchedProjects[i], githubUser: formState.githubUser};
+              console.log('myobj');
+              console.log(myObj);
+              // const { projectData } = addProject({
+              //   variables: myObj
+              // });
+              // console.log('projectData', projectData);
+            }
+
+
+            Auth.login(data.signup.token);
+            
             // const { projectData } = await addProject({
-            //   variables:
+            //   variables: 
             // })
         } catch (e) {
             console.error(e)
