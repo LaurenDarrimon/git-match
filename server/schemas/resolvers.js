@@ -8,7 +8,7 @@ const resolvers = {
         return User.find().populate('projects');
       },
       user: async (parent, { githubUser }) => {
-        return User.findOne({ githubUser }).populate('projects');
+        return User.findOne({ githubUser });
       },
       allProjects: async () => {
         return Project.find();
@@ -22,7 +22,7 @@ const resolvers = {
       },
       me: async (parent, args, context) => {
         if (context.user) {
-          return User.findOne({ _id: context.user._id }).populate('projects');
+          return User.findOne({ _id: context.user._id });
         }
         throw new AuthenticationError('You need to be logged in!');
       },

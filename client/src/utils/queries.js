@@ -38,6 +38,7 @@ export const QUERY_SINGLE_USER = gql`
       blog
       location
       bio
+      email
     }
   }
 `;
