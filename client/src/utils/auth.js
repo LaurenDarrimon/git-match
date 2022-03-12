@@ -1,4 +1,5 @@
 import decode from 'jwt-decode';
+import { Link } from 'react-router-dom';
 
 class AuthService {
   getProfile() {
@@ -25,7 +26,7 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/me');
+    window.location.assign('/');
   }
 
   logout() {

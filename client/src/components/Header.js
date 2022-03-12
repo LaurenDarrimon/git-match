@@ -28,12 +28,7 @@ const Header = () => {
             </>
           ) : (
             <>
-              <Link className="btn btn-lg m-2 gradient" to="/login">
-                Login
-              </Link>
-              <Link className="btn btn-lg m-2 gradient" to="/signup">
-                Signup
-              </Link>
+
             </>
           )}
         </div>
