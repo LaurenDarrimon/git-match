@@ -51,6 +51,7 @@ const resolvers = {
       // open
       const arr = [];
       const langArr = [];
+      const repoArr = [];
       await fetch(`https://api.github.com/users/${githubUser}`)
         .then((response) => response.json())
         .then((data) => {
@@ -71,38 +72,51 @@ const resolvers = {
           for (var i = 0; i < data.length; i++) {
             //for each project, make call for languages on that project
 
-            let repoName = data[i].name;
-
-            console.log(repoName);
-
-            return fetch(
-              `https://api.github.com/repos/${githubUser}/${repoName}/languages`
-            )
-              .then((response) => response.json())
-              .then((langData) => {
-                for (lang in langData) {
-                  console.log("we're in the lang loop");
-                  language = {
-                    language: lang,
-                    count: langData[lang],
-                  };
-                  langArr.push(language);
-                }
-                console.log(langArr);
-                projectInfo = {
-                  name: data[i].name,
-                  description: data[i].description,
-                  repo_link: data[i].html_url,
-                  languages: langArr,
-                }
-                arr.push(projectInfo);
-    
-                results.projects = arr;
-                console.log("______results________")
-                console.log(results);
-              })                   
+            repoArr.push(data[i].name);
+            const projectInfo = {
+              name: data[i].name,
+              description: data[i].description,
+              repo_link: data[i].html_url,
+            }
+            arr.push(projectInfo);
+                           
           }
         });
+
+        for(let i = 0; i < repoArr.length; i++){
+          fetch(
+            `https://api.github.com/repos/${githubUser}/${repoArr[i]}/languages`
+          )
+            .then((response) => response.json())
+            .then((langData) => {
+              // console.log('langData:');
+              // console.log(langData instanceof Object);
+              for (lang in langData) {
+                // console.log("we're in the lang loop");
+                language = {
+                  language: lang,
+                  count: langData[lang],
+                };
+                langArr.push(language);
+              };
+
+              for (let i = 0; i < arr.length ; i++) {
+                arr[i].languages = langArr[i];
+              }
+              console.log('arr');
+              console.log(arr)
+              // console.log(langArr);
+
+  
+              results.projects = arr;
+              console.log("______results________")
+              console.log(results);
+            })    
+        }
+
+        console.log('arr array:', arr);
+
+
       const user = await User.create({
         githubUser,
         email,
