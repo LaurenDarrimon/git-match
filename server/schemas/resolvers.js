@@ -2,6 +2,10 @@ const { AuthenticationError } = require("apollo-server-express");
 const { User, Project } = require("../models");
 const { signToken } = require("../utils/auth");
 const fetch = require("node-fetch");
+const axios = require("axios");
+const {
+  ApolloServerPluginLandingPageGraphQLPlayground,
+} = require("apollo-server-core");
 
 const resolvers = {
   Query: {
@@ -49,60 +53,99 @@ const resolvers = {
 
     signup: async (parent, { githubUser, email, password }) => {
       // open
-      const arr = [];
-      const langArr = [];
-      await fetch(`https://api.github.com/users/${githubUser}`)
-        .then((response) => response.json())
-        .then((data) => {
-          results = {
-            name: data.name,
-            avatar: data.avatar_url,
-            blog: data.blog,
-            location: data.location,
-            member_since: data.created_at,
-            bio: data.bio,
+      let results = {};
+      const projectArr = [];
+
+      //-------------API call for USER----------------------------------
+      const apiUser = async () => {
+        try {
+          const userResponse = await axios.get(
+            `https://api.github.com/users/${githubUser}`
+          );
+
+          console.log("______________userResponse_________");
+          console.log(userResponse);
+
+          const results = {
+            name: userResponse.data.name,
+            avatar: userResponse.data.avatar_url,
+            blog: userResponse.data.blog,
+            location: userResponse.data.location,
+            member_since: userResponse.data.created_at,
+            bio: userResponse.data.bio,
           };
 
-        return fetch(`https://api.github.com/users/${githubUser}/starred`); 
-        })
-      // close  
-        .then((response) => response.json())
-        .then((data) => {
-          for (var i = 0; i < data.length; i++) {
+          console.log("______________results_________");
+          console.log(results);
+        } catch (err) {
+          // Handle Error Here
+          console.error(err);
+          console.error("Error in the user call");
+        }
+      };
+
+      //-------------API call for PROJECTS----------------------------------
+      const apiProjects = async () => {
+        try {
+          const projectResponse = await axios.get(
+            `https://api.github.com/users/${githubUser}/starred`
+          );
+
+          const projectData = projectResponse.data;
+
+          for (var i = 0; i < projectData.length; i++) {
             //for each project, make call for languages on that project
 
-            let repoName = data[i].name;
+            let repoName = projectData[i].name;
 
             console.log(repoName);
 
-            return fetch(
+            const singleProjectInfo = {
+              name: projectData[i].name,
+              description: projectData[i].description,
+              repo_link: projectData[i].html_url,
+            };
+
+            projectArr.push(singleProjectInfo);
+
+            //for each project, wait until we get the lang array
+            const langArr = [];
+
+            //-------------nested API call for LANGUAGES----------------------------------
+            const langResponse = await axios.get(
               `https://api.github.com/repos/${githubUser}/${repoName}/languages`
-            )
-              .then((response) => response.json())
-              .then((langData) => {
-                for (lang in langData) {
-                  console.log("we're in the lang loop");
-                  language = {
-                    language: lang,
-                    count: langData[lang],
-                  };
-                  langArr.push(language);
-                }
-                console.log(langArr);
-                projectInfo = {
-                  name: data[i].name,
-                  description: data[i].description,
-                  repo_link: data[i].html_url,
-                  languages: langArr,
-                }
-                arr.push(projectInfo);
-    
-                results.projects = arr;
-                console.log("______results________")
-                console.log(results);
-              })                   
+            );
+
+            const langData = langResponse.data;
+
+            for (lang in langData) {
+              const language = {
+                language: lang,
+                count: langData[lang],
+              };
+              langArr.push(language);
+            }
+
+            //set a key of languages with the array on each project
+            singleProjectInfo.languages = langArr;
           }
-        });
+        } catch (err) {
+          console.error(err);
+          console.error("Error in project call");
+        }
+      };
+
+      //wait for the userdata
+      await apiUser();
+
+      //then, once we have the user data, get the project data
+      await apiProjects();
+      //within each project call, we will make a call for each language
+      // await apiProjects();
+
+      //add a key of projects to the results array, and fill it with the project array.
+      results.projects = projectArr;
+
       const user = await User.create({
         githubUser,
         email,
