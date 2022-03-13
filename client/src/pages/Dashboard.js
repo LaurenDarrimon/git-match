@@ -56,10 +56,10 @@ const Dashboard = () => {
   return (
     <div>
       <h5>{Auth.getProfile().data.githubUser} Dashboard</h5>
-      <h4>Projects/Users Matches</h4>
-      <h1>{projectName}</h1>
+      <h4>Users Matches</h4>
+      {/* <h1>{projectName}</h1>
       <h2>{projectDescription}</h2>
-      <h2>{repoLink}</h2>
+      <h2>{repoLink}</h2> */}
     </div>
 
   )
