@@ -3,10 +3,9 @@ import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import Match from "../components/Match";
-//import Project from "../components/Project";
+import Project from "../components/Project";
 
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
-import ProjectList from "../components/ProjectList";
 
 import Auth from "../utils/auth";
 
@@ -59,11 +58,11 @@ const Profile = () => {
           className="row d-flex justify-content-around"
         >
           {user.projects.map((project) => (
-            <ProjectList
-              key={project.id}
-              title={project.title}
+            <Project
+              key={project.name}
+              name={project.name}
               description={project.description}
-              repo_url={project.repo_url}
+              repo_link={project.repo_link}
             />
           ))}
         </div>
