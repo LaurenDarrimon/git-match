@@ -17,25 +17,25 @@ const Dashboard = () => {
   const [projectDescription, setProjectDescription] = useState("");
   const [repoLink, setRepoLink] = useState("");
 
-  useEffect(() => {
-    API.fetchStarred(Auth.getProfile().data.githubUser)
-      .then(async (response) => {
-        const data = await response;
-        // console.log(data[0].name);
-        // project name
-        if (data && data[0].name) {
-          setProjectName(data[0].name);
-        }
-        // project description
-        if (data && data[0].description) {
-          setProjectDescription(data[0].description);
-        }
-        // repo link
-        if (data && data[0].repo_link) {
-          setRepoLink(data[0].repo_link);
-        }
-      });
-  }, []);
+  // useEffect(() => {
+  //   API.fetchStarred(Auth.getProfile().data.githubUser)
+  //     .then(async (response) => {
+  //       const data = await response;
+  //       // console.log(data[0].name);
+  //       // project name
+  //       if (data && data[0].name) {
+  //         setProjectName(data[0].name);
+  //       }
+  //       // project description
+  //       if (data && data[0].description) {
+  //         setProjectDescription(data[0].description);
+  //       }
+  //       // repo link
+  //       if (data && data[0].repo_link) {
+  //         setRepoLink(data[0].repo_link);
+  //       }
+  //     });
+  // }, []);
 
   // function loadProjects() {
   //     API.fetchStarred(Auth.getProfile().data.githubUser)

@@ -31,6 +31,10 @@ export const ADD_USER = gql`
           name
           description
           repo_link
+          languages {
+            language
+            count
+          }
         }
       }
     }
@@ -45,6 +49,10 @@ export const ADD_PROJECT = gql`
       name
       description
       repo_link
+      languages {
+            language
+            count
+          }
     }
   }
 `
