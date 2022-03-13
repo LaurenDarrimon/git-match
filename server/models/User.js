@@ -13,6 +13,7 @@ const userSchema = new Schema({
         type: String, 
         required: true,
         trim: true,
+        unique:true
     },
     password: {
         type: String,
@@ -24,7 +25,8 @@ const userSchema = new Schema({
         type: String, 
         required: true,
         trim: true,
-        validate: [emailValidate, 'invalid Email']
+        validate: [emailValidate, 'invalid Email'],
+        //unique:true 
     },
     name: {
         type: String,
