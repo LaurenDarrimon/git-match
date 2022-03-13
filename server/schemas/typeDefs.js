@@ -12,16 +12,16 @@ const typeDefs = gql`
     location: String
     member_since: String
     bio: String
-    projects: [Project]!
+    projects: [Project]
   }
 
   type Project {
-    _id: ID
     name: String
     repo_link: String
-    languages: String 
-    deployed_link: String
-    githubUser: String
+    description: String
+    # languages: String 
+    # deployed_link: String
+    # githubUser: String
   }
 
   type Auth {

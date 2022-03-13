@@ -56,11 +56,26 @@ const userSchema = new Schema({
             type: Schema.Types.ObjectId, ref: 'User' 
         }
     ],
-    projects: [
-        {
-          type: Schema.Types.ObjectId, ref: 'Project'
-        }
-    ],
+    projects: [{
+          name: {
+            type: String,
+          },
+          description: { type: String },
+          repo_link: {
+            type: String,
+          },
+          deployed_link: {
+            type: String,
+          },
+        //   languages: [{
+        //     language:{
+        //         type: String
+        //          },
+        //     count: {
+        //         type: Number
+        //     }
+        //   }],
+    }],
     swipeProject:  [
         {
           type: Schema.Types.ObjectId, ref: 'Project'
@@ -72,6 +87,34 @@ const userSchema = new Schema({
         }
     ],
 });
+
+// const projectSchema = new mongoose.Schema({
+//     githubUser: {
+//         type: String,
+//         required: true,
+//         trim: true,
+//       },
+//       name: {
+//         type: String,
+//       },
+//       description: { type: String },
+//       repo_link: {
+//         type: String,
+//       },
+//       deployed_link: {
+//         type: String,
+//       },
+//       //languages: [languageSchema],
+//   });
+
+//   const languageSchema = new mongoose.Schema({
+//     language:{
+//         type: String
+//     },
+//     count: {
+//         type: Number
+//     }
+//   });
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {

@@ -27,6 +27,11 @@ export const ADD_USER = gql`
         location
         blog
         member_since
+        projects {
+          name
+          description
+          repo_link
+        }
       }
     }
   }
