@@ -67,14 +67,14 @@ const userSchema = new Schema({
           deployed_link: {
             type: String,
           },
-        //   languages: [{
-        //     language:{
-        //         type: String
-        //          },
-        //     count: {
-        //         type: Number
-        //     }
-        //   }],
+          languages: [{
+            language:{
+                type: String
+                 },
+            count: {
+                type: Number
+            }
+          }],
     }],
     swipeProject:  [
         {

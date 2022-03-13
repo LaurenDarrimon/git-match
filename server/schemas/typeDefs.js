@@ -19,9 +19,12 @@ const typeDefs = gql`
     name: String
     repo_link: String
     description: String
-    # languages: String 
-    # deployed_link: String
-    # githubUser: String
+    languages: [Language]
+  }
+
+  type Language {
+    language: String
+    count: String
   }
 
   type Auth {
