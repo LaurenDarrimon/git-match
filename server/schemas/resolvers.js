@@ -52,7 +52,7 @@ const resolvers = {
     },
 
     signup: async (parent, { githubUser, email, password }) => {
-      // open
+      // empty array we will modify 
       let results = {};
       const projectArr = [];
 
@@ -63,10 +63,10 @@ const resolvers = {
             `https://api.github.com/users/${githubUser}`
           );
 
-          console.log("______________userResponse_________");
-          console.log(userResponse);
+          // console.log("______________userResponse_________");
+          // console.log(userResponse);
 
-          const results = {
+          results = {
             name: userResponse.data.name,
             avatar: userResponse.data.avatar_url,
             blog: userResponse.data.blog,
@@ -75,8 +75,8 @@ const resolvers = {
             bio: userResponse.data.bio,
           };
 
-          console.log("______________results_________");
-          console.log(results);
+          // console.log("______________results_________");
+          // console.log(results);
         } catch (err) {
           // Handle Error Here
           console.error(err);

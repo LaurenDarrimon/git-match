@@ -1,56 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+// import Project from "../components/Project";
 
-const ProjectList = ({
-  projects,
-  name,
-  description,
-  repo_link,
-  showTitle = true,
-  showUsername = true,
-}) => {
-  if (!name.length) {
-    return <h3>No Starred Projects</h3>;
-  }
+// export default function ProjectList(props) {
+  
 
-  return (
-    <div>
-      {showTitle && <h3>{name}</h3>}
-      {projects &&
-        projects.map((project) => (
-          <div key={project._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              {showUsername ? (
-                <Link
-                  className="text-light"
-                  to={`/profiles/${project.githubUser}`}
-                >
-                  {project.githubUser} <br />
-                  <span style={{ fontSize: '1rem' }}>
-                    Description {description}
-                  </span>
-                </Link>
-              ) : (
-                <>
-                  <span style={{ fontSize: '1rem' }}>
-                  Description {description}
-                  </span>
-                </>
-              )}
-            </h4>
-            <div className="card-body bg-light p-2">
-              <p>{project.description}</p>
-            </div>
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/projects/${project._id}`}
-            >
-              Join the discussion on this thought.
-            </Link>
-          </div>
-        ))}
-    </div>
-  );
-};
 
-export default ProjectList;
+//   return (
+//     <section className="row section-top" id="portfolio">
+//       <div className="col-12"
+//       data-aos="fade-right"
+//       data-aos-offset="300"
+//       data-aos-easing="ease-in-sine">
+//         <h2 className="display-1 serif">PORTFOLIO</h2>
+//       </div>
+//       <div className="col-12">
+//         <div
+//           id="portfolio-list-section"
+//           className="row d-flex justify-content-around"
+//         >
+//           {projects.map((project) => (
+//             <Project
+//               key={project.id}
+//               name={project.name}
+//               description={project.description}
+//               repo_url={project.repo_url}
+//             />
+//           ))}
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
