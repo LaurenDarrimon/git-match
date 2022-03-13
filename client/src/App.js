@@ -62,25 +62,28 @@ function App() {
           <Header />
           <div className="container">
             <Routes>
-              <Route 
+              <Route
                 path="/"
                 element={<Home />}
               />
-              <Route 
-                path="/login" 
+              <Route
+                path="/login"
                 element={<Login />}
               />
-              <Route 
-                path="/signup" 
+              <Route
+                path="/signup"
                 element={<Signup />}
               />
-               <Route 
-                path="/profiles/:githubUser" 
+              <Route
+                path="/profiles/:githubUser"
                 element={<Profile />}
               />
-               
-               <Route 
-                path="/me" 
+              <Route
+                path="/profiles/"
+                element={<Profile />}
+              />
+              <Route
+                path="/me"
                 element={<Dashboard />}
               />
 

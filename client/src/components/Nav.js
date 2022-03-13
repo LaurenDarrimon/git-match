@@ -7,7 +7,6 @@ const Nav = () => {
     return (
         <div>
             <Link to="/profiles">My Profile</Link>
-            <Link to="/profiles">My Profile</Link>
         </div>
     )
 }
