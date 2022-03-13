@@ -8,14 +8,9 @@ const resolvers = {
   
     Query: {
       users: async () => {
-        return User.find().populate('projects');
+        return User.find()
       },
-      user: 
-      // async (_, { user }) => {
-      //   const response = await fetch(`https://api.github.com/users/${user}`);
-      //   return response.json();
-      // },
-      async (parent, { githubUser }) => {
+      user: async (parent, { githubUser }) => {
         return User.findOne({ githubUser });
       },
       allProjects: async () => {
@@ -64,9 +59,26 @@ const resolvers = {
               blog: data.blog,
               location: data.location,
               member_since: data.created_at,
-              bio: data.bio             
+              bio: data.bio,            
             }
-          }) 
+          })
+          const arr = [];
+          await fetch(`https://api.github.com/users/${githubUser}/starred`)
+            .then(response => response.json())
+            .then(data => {
+              for(var i = 0; i<data.length; i++){
+                projectInfo = {
+                  name: data[i].name,
+                  description:  data[i].description,
+                  repo_link: data[i].html_url,            
+                }
+                  arr.push(projectInfo);
+                  
+
+                }
+                results.projects = arr;
+                console.log(results);
+              })
         const user = await User.create({githubUser, email, password, ...results});
         const token = signToken(user);
         return { token, user };

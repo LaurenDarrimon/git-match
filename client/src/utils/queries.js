@@ -10,6 +10,11 @@ export const QUERY_USERS = gql`
       blog
       location
       bio
+      projects {
+          name
+          description
+          repo_link
+        }
     }
   }
 `;
@@ -24,6 +29,11 @@ export const QUERY_ME = gql`
       blog
       location
       bio
+      projects {
+          name
+          description
+          repo_link
+        }
     }
   }
 `;
@@ -39,6 +49,11 @@ export const QUERY_SINGLE_USER = gql`
       location
       bio
       email
+      projects {
+          name
+          description
+          repo_link
+        }
     }
   }
 `;
