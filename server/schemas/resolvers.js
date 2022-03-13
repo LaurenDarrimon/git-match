@@ -48,6 +48,9 @@ const resolvers = {
     },
 
     signup: async (parent, { githubUser, email, password }) => {
+      // open
+      const arr = [];
+      const langArr = [];
       await fetch(`https://api.github.com/users/${githubUser}`)
         .then((response) => response.json())
         .then((data) => {
@@ -59,10 +62,10 @@ const resolvers = {
             member_since: data.created_at,
             bio: data.bio,
           };
-        });
-      const arr = [];
-      const langArr = [];
-      await fetch(`https://api.github.com/users/${githubUser}/starred`)
+
+        return fetch(`https://api.github.com/users/${githubUser}/starred`); 
+        })
+      // close  
         .then((response) => response.json())
         .then((data) => {
           for (var i = 0; i < data.length; i++) {
@@ -86,21 +89,18 @@ const resolvers = {
                   langArr.push(language);
                 }
                 console.log(langArr);
-              })
-              .then(
-
-            projectInfo = {
-              name: data[i].name,
-              description: data[i].description,
-              repo_link: data[i].html_url,
-              languages: langArr,
-            }
-            arr.push(projectInfo);
-
-            results.projects = arr;
-            console.log("______results________")
-            console.log(results);
-              
+                projectInfo = {
+                  name: data[i].name,
+                  description: data[i].description,
+                  repo_link: data[i].html_url,
+                  languages: langArr,
+                }
+                arr.push(projectInfo);
+    
+                results.projects = arr;
+                console.log("______results________")
+                console.log(results);
+              })                   
           }
         });
       const user = await User.create({
