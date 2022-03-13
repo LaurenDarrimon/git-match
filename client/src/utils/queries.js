@@ -14,6 +14,10 @@ export const QUERY_USERS = gql`
           name
           description
           repo_link
+          languages {
+            language
+            count
+          }
         }
     }
   }
@@ -33,6 +37,10 @@ export const QUERY_ME = gql`
           name
           description
           repo_link
+          languages {
+            language
+            count
+          }
         }
     }
   }
@@ -53,6 +61,10 @@ export const QUERY_SINGLE_USER = gql`
           name
           description
           repo_link
+          languages {
+            language
+            count
+          }
         }
     }
   }
@@ -65,6 +77,10 @@ export const QUERY_USER_PROJECTS = gql`
       description
       repo_link
       deployed_link
+      languages {
+            language
+            count
+          }
     }
   }
 `;
@@ -76,6 +92,10 @@ export const QUERY_ONE_PROJECT = gql`
       description
       repo_link
       deployed_link
+      languages {
+            language
+            count
+          }
     }
   }
 `;
@@ -87,6 +107,10 @@ export const QUERY_ALL_PROJECTS = gql`
       description
       repo_link
       deployed_link
+      languages {
+            language
+            count
+          }
     }
   }  
 `;
