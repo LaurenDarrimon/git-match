@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
   mutation login($githubUser: String!, $password: String!) {
@@ -41,41 +41,50 @@ export const ADD_USER = gql`
   }
 `;
 
-
 export const ADD_SWIPE = gql`
   mutation addSwipe($githubUser: String!, $githubUser2: String!) {
     addSwipe(githubUser: $githubUser, githubUser2: $githubUser2) {
-      user {
+      githubUser
+      swipeRight {
         githubUser2
       }
     }
   }
 `;
-
 
 export const ADD_MATCH = gql`
   mutation addMatch($githubUser: String!, $githubUser2: String!) {
     addMatch(githubUser: $githubUser, githubUser2: $githubUser2) {
-      user {
+      githubUser
+      swipeRight {
         githubUser2
       }
     }
   }
 `;
 
-
 export const ADD_PROJECT = gql`
-  mutation addProject($githubUser: String!, $name: String!, $description: String, $repo_link: String) {
-    addProject(githubUser: $githubUser, name: $name, description: $description, repo_link: $repo_link){
+  mutation addProject(
+    $githubUser: String!
+    $name: String!
+    $description: String
+    $repo_link: String
+  ) {
+    addProject(
+      githubUser: $githubUser
+      name: $name
+      description: $description
+      repo_link: $repo_link
+    ) {
       _id
       githubUser
       name
       description
       repo_link
       languages {
-            language
-            count
-          }
+        language
+        count
+      }
     }
   }
-`
+`;

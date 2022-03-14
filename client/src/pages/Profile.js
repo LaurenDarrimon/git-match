@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { useMutation } from '@apollo/client';
+import { useQuery, useState, useMutation} from "@apollo/client";
 
 import Match from "../components/Match";
 import Project from "../components/Project";
@@ -15,6 +14,8 @@ import nextButton from "../assets/images/next.png";
 import matchButton from "../assets/images/match-double.png";
 
 const Profile = () => {
+  //const [profileState, setProfileState] = useState({ githubUser2: '' });
+
   const { githubUser } = useParams();
 
   const { loading, data } = useQuery(
@@ -62,22 +63,25 @@ const Profile = () => {
 
   //EVENT handler for swipe button 
   const handleSwipe = async (event) => {
-    // console.log("someone swiped!");
-    // console.log(event);
-    // console.log(event.target.dataset.user2);
+    console.log("someone swiped!");
+    console.log(event);
+    console.log(event.target.dataset.user2);
 
 
     const githubUser1 = Auth.getProfile().data.githubUser
     const githubUser2 = event.target.dataset.user2; 
 
-    // console.log("githubUser1")
-    // console.log(githubUser1)
+    console.log("githubUser2")
+    console.log(githubUser2)
+
+    console.log("githubUser1")
+    console.log(githubUser1)
 
     try {
 
       //add swipe
       const newSwipeData = await addSwipe({
-        variables: { githubUser1, githubUser2 },
+        variables: { githubuser1: githubUser1, githubUser2: githubUser2 },
       });
 
       console.log("newswipedata")

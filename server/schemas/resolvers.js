@@ -182,7 +182,7 @@ const resolvers = {
         { githubUser: githubUser },
         {
           $addToSet: {
-            swipeRight: githubUser2
+            swipeRight: { githubUser2: githubUser2 }
           },
         },
         { new: true }
@@ -198,7 +198,7 @@ const resolvers = {
         { githubUser: githubUser },
         {
           $addToSet: {
-            match: githubUser2
+            match: { githubUser2: githubUser2 }
           },
         },
         { new: true }
