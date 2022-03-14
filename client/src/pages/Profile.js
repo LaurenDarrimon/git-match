@@ -8,6 +8,8 @@ import Project from "../components/Project";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
+import nextButton from "../assets/images/next.png";
+import matchButton from "../assets/images/match-double.png";
 
 const Profile = () => {
   const { githubUser } = useParams();
@@ -21,10 +23,11 @@ const Profile = () => {
   console.log(data);
   const user = data?.me || data?.user || {};
 
-  // navigate to personal profile page if username is yours
-  // if (Auth.loggedIn() && Auth.getProfile().data._id === githubUser) {
-  //   return <Navigate to="/me" />;
-  // }
+  //if the user is logged in and the person logged in is on thier own profile, set logged in
+  let loggedIn = false;
+  if (Auth.loggedIn() && Auth.getProfile().data.githubUser === githubUser) {
+    loggedIn = true;
+  }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -42,21 +45,35 @@ const Profile = () => {
   return (
     <div>
       <div className="flex-row justify-center mb-3">
-        <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
-          Viewing {githubUser ? `${user.githubUser}'s` : "your"} profile.
-        </h2>
-        <div className="col-12 col-md-10 mb-5">
-          <div>
-          <h4> user name {user.name}</h4>
-          <p>email: {user.email}</p>
-          <p>bio: {user.bio}</p>
-          <p>location: {user.location}</p>
-          </div>
+        <div className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
+          <h2>
+            Viewing {githubUser ? `${user.githubUser}'s` : "your"} profile.
+          </h2>
+        </div>
 
-          <div
+        <div className="col-md-5">
+          <img src={user.avatar} alt="user avatar from github" />
+        </div>
+
+        <div className="col-md-5">
+          <div>
+            <h4> user name {user.name}</h4>
+            <p>email: {user.email}</p>
+            <p>bio: {user.bio}</p>
+            <p>location: {user.location}</p>
+          </div>
+        </div>
+
+        <div>
+          <img src={nextButton} alt="next button"/>
+          <img src={matchButton} alt="match button" />
+        </div>
+
+        <div
           id="portfolio-list-section"
           className="row d-flex justify-content-around"
         >
+          <h3> {user.githubUser}'s Starred Repos</h3>
           {user.projects.map((project) => (
             <Project
               key={project.name}
@@ -65,9 +82,6 @@ const Profile = () => {
               repo_link={project.repo_link}
             />
           ))}
-        </div>
-
-          <img src={user.avatar} alt="user avatar from github" />
         </div>
       </div>
     </div>

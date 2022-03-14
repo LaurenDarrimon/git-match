@@ -7,6 +7,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import Home from './pages/Home';
 import Signup from './pages/Signup';
@@ -22,10 +24,10 @@ import Footer from './components/Footer';
 
 import './index.css';
 
-import "./fonts/LEMONMILK-Regular.woff2";
-import "./fonts/LEMONMILK-Regular.woff";
-import "./fonts/LEMONMILK-Medium.woff2";
-import "./fonts/LEMONMILK-Medium.woff";
+import "./assets/fonts/LEMONMILK-Regular.woff2";
+import "./assets/fonts/LEMONMILK-Regular.woff";
+import "./assets/fonts/LEMONMILK-Medium.woff2";
+import "./assets/fonts/LEMONMILK-Medium.woff";
 
 
 

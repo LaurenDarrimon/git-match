@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import logoText from "../assets/images/logo-text.png";
 
 const Footer = () => {
   const location = useLocation();
@@ -15,9 +16,10 @@ const Footer = () => {
             &larr; Go Back
           </button>
         )}
-        <h4>
+        <h5>
           David Chou |  Lauren Darrimon | Jose Pascual
-        </h4>
+        </h5>
+        <img src={logoText} alt="white and pink Git Match logo" style={{width: '300px'}} />
       </div>
     </footer>
   );

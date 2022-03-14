@@ -1,8 +1,8 @@
 @font-face {
   font-family: "LEMONMILK";
   src: local("LEMONMILK-Regular"),
-    url("./fonts/LEMONMILK-Regular.woff2") format("woff2"),
-    url("./fonts/LEMONMILK-Regular.woff") format("woff");
+    url("./assets/fonts/LEMONMILK-Regular.woff2") format("woff2"),
+    url("./assets/fonts/LEMONMILK-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -11,8 +11,8 @@
 @font-face {
   font-family: "LEMONMILK-Medium";
   src: local("LEMONMILK-Medium"),
-    url("./fonts/LEMONMILK-Medium.woff2") format("woff2"),
-    url("./fonts/LEMONMILK-Medium.woff") format("woff");
+    url("./assets/fonts/LEMONMILK-Medium.woff2") format("woff2"),
+    url("./assets/fonts/LEMONMILK-Medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -39,6 +39,7 @@ body {
     background: rgb(221,30,71);
     background: linear-gradient(90deg, rgba(221,30,71,1) 0%, rgba(243,127,123,1) 100%);
     color: var(--palegrey) !important;
+    border: none; 
 }
 
 .dark {
@@ -52,5 +53,6 @@ h1, h2, h3, h4 {
 
 .btn {
     border-radius: 0 !important;
+    border: none !important; 
 }
 
