@@ -12,14 +12,14 @@ const Modal = () => {
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div className="modal-content">
           <div class="modal-header">
             <h1 class="modal-title" id="matchModalLabel">
                 You made a match!
             </h1>
             <button
               type="button"
-              class="close"
+              className="close"
               data-dismiss="modal"
               aria-label="Close"
             > Profile

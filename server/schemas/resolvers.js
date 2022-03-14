@@ -198,7 +198,7 @@ const resolvers = {
         { githubUser: githubUser },
         {
           $addToSet: {
-            match: githubUser2,
+            match: githubUser2
           },
         },
         { new: true }
@@ -206,6 +206,7 @@ const resolvers = {
       // Matchup.create(githubUser);
       return match;
     },
+
     // remove user
     removeUser: async (parent, args) => {
       return User.findOneAndDelete(args.id);
