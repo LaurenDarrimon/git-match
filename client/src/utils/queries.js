@@ -33,6 +33,7 @@ export const QUERY_ME = gql`
       blog
       location
       bio
+      email
       projects {
           name
           description

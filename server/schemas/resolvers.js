@@ -177,12 +177,17 @@ const resolvers = {
       return project;
     },
 
+    addSwipe: async (parent, { githubUser }, context) => {
+      
+    },
+
     // might not be right, but to create a match, we want to add the target user id onto the
     // match array of the logged in user.
-    addMatch: async (parent, { ObjectId }, context) => {
+    addMatch: async (parent, { githubUser }, context) => {
       const match = await User.updateOne(
         { githubUser: context.user.githubUser },
-        { $push: { _id: ObjectId } }
+        { $push: { _id: ObjectId } },
+        { new: true }
       );
       // Matchup.create(githubUser);
       return match;
