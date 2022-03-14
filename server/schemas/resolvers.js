@@ -177,16 +177,30 @@ const resolvers = {
       return project;
     },
 
-    addSwipe: async (parent, { githubUser }, context) => {
-      
+    addSwipe: async (parent, { githubUser1, githubUser2  }, context) => {
+      const swipeRight = await User.findOneAndUpdate(
+        { githubUser: githubUser1 },
+        {
+          $addToSet: {
+            swipeRight: githubUser2,
+          },
+        },
+        { new: true }
+      );
+      return swipeRight;
     },
 
-    // might not be right, but to create a match, we want to add the target user id onto the
+    // to create a match, we want to add the target user id onto the
     // match array of the logged in user.
-    addMatch: async (parent, { githubUser }, context) => {
+    //gitHUb user 1 is doing the swiping. user2 is getting swiped on
+    addMatch: async (parent, { githubUser1, githubUser2 }, context) => {
       const match = await User.updateOne(
-        { githubUser: context.user.githubUser },
-        { $push: { _id: ObjectId } },
+        { githubUser: githubUser1 },
+        {
+          $addToSet: {
+            match: githubUser2,
+          },
+        },
         { new: true }
       );
       // Matchup.create(githubUser);
