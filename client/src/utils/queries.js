@@ -19,6 +19,9 @@ export const QUERY_USERS = gql`
             count
           }
         }
+        swipeRight{
+          githubUser2
+        }
     }
   }
 `;
@@ -43,6 +46,9 @@ export const QUERY_ME = gql`
             count
           }
         }
+        swipeRight{
+          githubUser2
+        }
     }
   }
 `;
@@ -66,6 +72,9 @@ export const QUERY_SINGLE_USER = gql`
             language
             count
           }
+        }
+        swipeRight{
+          githubUser2
         }
     }
   }

@@ -87,10 +87,21 @@ const Profile = () => {
       console.log("newswipedata")
       console.log(newSwipeData)
 
-      // //check user2 
-      // const { data } = await addMatch({
-      //   variables: { ... },
-      // });
+      // //check user2  the profile we are viewing 
+      console.log("user 2 data")
+      console.log(data)
+      console.log(data.user.swipeRight)
+
+      const profileSwipeRight  = data.user.swipeRight
+
+      for (let i=0; i< profileSwipeRight.length; i++){
+        console.log(profileSwipeRight[i].githubUser2)
+        if (profileSwipeRight[i].githubUser2 === githubUser1){
+          console.log("both users have matched!!")
+        } else{
+          console.log("no match")
+        }
+      }
 
       // //add matches 
       // const { data } = await addMatch({
