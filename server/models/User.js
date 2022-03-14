@@ -49,13 +49,12 @@ const userSchema = new Schema({
 
   swipeRight: [
     {
-        type: String 
+      type: String,
     },
   ],
   match: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "User",
+      type: String,
     },
   ],
   projects: [
