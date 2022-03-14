@@ -13,6 +13,16 @@ const typeDefs = gql`
     member_since: String
     bio: String
     projects: [Project]
+    swipeRight: [SwipeRight]
+    match: [Match]
+  }
+
+  type SwipeRight {
+    githubUser: String
+  }
+
+  type Match {
+    githubUser: String
   }
 
   type Project {
