@@ -20,15 +20,15 @@ export default function Project(props) {
         alt="development project thumbnail"
       /> */}
       <div className="card-body">
-        <h3 className="card-title">
+        <h4 className="card-title">
           {props.name}
           <br />
-        </h3>
+        </h4>
         <p className="card-text">{props.description}</p>
         <a
           href={props.repo_link}
           target="_blank"
-          className="btn btn-primary"
+          className="btn btn-primary gradient"
           rel="noreferrer"
         >
           Code
