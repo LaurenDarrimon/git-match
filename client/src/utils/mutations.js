@@ -52,6 +52,7 @@ export const ADD_SWIPE = gql`
   }
 `;
 
+
 export const ADD_MATCH = gql`
   mutation addMatch($githubUser: String!, $githubUser2: String!) {
     addMatch(githubUser: $githubUser, githubUser2: $githubUser2) {

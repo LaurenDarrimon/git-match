@@ -81,7 +81,7 @@ const Profile = () => {
 
       //add swipe
       const newSwipeData = await addSwipe({
-        variables: { githubuser1: githubUser1, githubUser2: githubUser2 },
+        variables: { githubUser: githubUser1, githubUser2: githubUser2 },
       });
 
       console.log("newswipedata")
@@ -98,7 +98,7 @@ const Profile = () => {
       // });
       
 
-      Auth.login(data.addUser.token);
+      //Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
