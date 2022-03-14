@@ -18,11 +18,11 @@ const typeDefs = gql`
   }
 
   type SwipeRight {
-    githubUser: String
+    githubUser2: String
   }
 
   type Match {
-    githubUser: String
+    githubUser2: String
   }
 
   type Project {
@@ -55,8 +55,8 @@ const typeDefs = gql`
     login(githubUser: String!, password: String!): Auth
     signup(githubUser: String!, email: String!, password: String!): Auth
     addProject(name: String!, githubUser: String!): Project
-    addMatch(githubUser1: String!, githubUser2: String!): User
-    addSwipe(githubUser1: String!, githubUser2: String!): User
+    addMatch(githubUser: String!, githubUser2: String!): Match 
+    addSwipe(githubUser: String!, githubUser2: String!): SwipeRight
 
     removeUser(githubUser: ID!): User
   }

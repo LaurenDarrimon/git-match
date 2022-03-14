@@ -43,8 +43,8 @@ export const ADD_USER = gql`
 
 
 export const ADD_SWIPE = gql`
-  mutation addSwipe($githubUser1: String!, $githubUser2: String!) {
-    addSwipe(githubUser1: $githubUser1, githubUser2: $githubUser2) {
+  mutation addSwipe($githubUser: String!, $githubUser2: String!) {
+    addSwipe(githubUser: $githubUser, githubUser2: $githubUser2) {
       user {
         _id
         githubUser
@@ -55,8 +55,8 @@ export const ADD_SWIPE = gql`
 
 
 export const ADD_MATCH = gql`
-  mutation addMatch($githubUser1: String!, $githubUser2: String!) {
-    addMatch(githubUser1: $githubUser1, githubUser2: $githubUser2) {
+  mutation addMatch($githubUser: String!, $githubUser2: String!) {
+    addMatch(githubUser: $githubUser, githubUser2: $githubUser2) {
       user {
         _id
         githubUser
