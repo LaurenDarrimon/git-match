@@ -47,16 +47,8 @@ const userSchema = new Schema({
     type: String,
   },
 
-  swipeRight: [
-    {
-      type: String,
-    },
-  ],
-  match: [
-    {
-      type: String,
-    },
-  ],
+  swipeRight: [{ githubUser2: { type: String } }],
+  match: [{ githubUser2: { type: String } }],
   projects: [
     {
       name: {
