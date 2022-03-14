@@ -55,7 +55,8 @@ const typeDefs = gql`
     login(githubUser: String!, password: String!): Auth
     signup(githubUser: String!, email: String!, password: String!): Auth
     addProject(name: String!, githubUser: String!): Project
-    addMatch(githubUser: String!): Auth
+    addMatch(githubUser1: String!, githubUser2: String!): User
+    addSwipe(githubUser1: String!, githubUser2: String!): User
 
     removeUser(githubUser: ID!): User
   }
