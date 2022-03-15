@@ -5,7 +5,7 @@ import { useQuery, useState, useMutation } from "@apollo/client";
 import Match from "../components/Match";
 import Project from "../components/Project";
 
-import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
+import { QUERY_SINGLE_USER, QUERY_ME, QUERY_USERS } from "../utils/queries";
 
 import { ADD_SWIPE, ADD_MATCH } from "../utils/mutations";
 
@@ -24,6 +24,13 @@ const Profile = () => {
       variables: { githubUser: githubUser },
     }
   );
+
+  const allUserData = useQuery(
+     QUERY_USERS,
+  );
+
+  console.log("all users")
+  console.log(allUserData.data)
 
 
   const [addSwipe, swipeData] = useMutation(ADD_SWIPE);
