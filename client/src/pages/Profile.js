@@ -3,7 +3,6 @@ import { Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 
-import Match from "../components/Match";
 import Project from "../components/Project";
 
 import { QUERY_SINGLE_USER, QUERY_ME, QUERY_USERS } from "../utils/queries";
@@ -177,7 +176,6 @@ const Profile = () => {
         <div className="col-md-5">
           <div>
             <h4>{user.name}</h4>
-            <p>email: {user.email}</p>
             <p>bio: {user.bio}</p>
             <p>location: {user.location}</p>
           </div>
