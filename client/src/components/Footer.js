@@ -19,7 +19,15 @@ const Footer = () => {
         <h5>
           David Chou |  Lauren Darrimon | Jose Pascual
         </h5>
-        <img src={logoText} alt="white and pink Git Match logo" style={{width: '300px'}} />
+        <img src={logoText} alt="white and pink Git Match logo" style={{width: '300px', padding: '20px'}} />
+        <div>
+        <button
+            className="btn btn-dark mb-3"
+            onClick={() => navigate("/about")}
+          >
+            &larr; ABOUT
+          </button>
+        </div>
       </div>
     </footer>
   );
