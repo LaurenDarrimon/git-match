@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://morning-sea-85016.herokuapp.com/",
   "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.3.5",
