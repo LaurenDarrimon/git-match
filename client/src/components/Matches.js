@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Matches(props) {
-  
+
 
   return (
     <div
@@ -16,10 +16,10 @@ export default function Matches(props) {
           {props.githubUser2}
           <br />
         </h4>
-        <Link to={`/profiles/${props.githubUser2}`} 
-        activeClassName="active" className="btn btn-primary gradient">
+        <Link to={`/matches/${props.githubUser2}`}
+          className="btn btn-primary gradient">
           View Profile
-          </Link>
+        </Link>
       </div>
     </div>
   );

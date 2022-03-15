@@ -1,9 +1,8 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 
-import Match from "../components/Match";
 import Project from "../components/Project";
 
 import { QUERY_SINGLE_USER, QUERY_ME, QUERY_USERS } from "../utils/queries";
@@ -74,14 +73,14 @@ const Profile = () => {
     // const allUserData = userData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);
     const allUserData = [];
 
-    for (let i = 0; i<userData.data.users.length; i++){
+    for (let i = 0; i < userData.data.users.length; i++) {
       if (userData.data.users[i].githubUser !== Auth.getProfile().data.githubUser) {
         allUserData.push(userData.data.users[i]);
       }
     }
     console.log('allUserData');
     console.log(allUserData);
-    
+
 
 
 
@@ -135,6 +134,7 @@ const Profile = () => {
           setIsOpen(true);
           setShow(true);
         } else {
+          // window.location.assign(`/profiles/${nextUser.githubUser}`)
           console.log("no match");
         }
       }
@@ -159,7 +159,7 @@ const Profile = () => {
     console.log(newMatchData2);
     //add matches
   };
-
+  
   return (
     <div>
       <div className="flex-row justify-center mb-3">
@@ -176,22 +176,25 @@ const Profile = () => {
         <div className="col-md-5">
           <div>
             <h4>{user.name}</h4>
-            <p>email: {user.email}</p>
             <p>bio: {user.bio}</p>
             <p>location: {user.location}</p>
           </div>
         </div>
-
+        
         <div>
-
           <div>
             {nextUser && (
               <Link to={`/profiles/${nextUser.githubUser}`}>
-                <img
+                {githubUser ? <img
                   src={nextButton}
                   alt="next button"
                   data-user2={user.githubUser}
-                />
+                /> : 
+                <button className="btn btn-lg m-2 gradient">
+                Start Matching!
+              </button>
+              }
+                
               </Link>
             )}
 
@@ -207,7 +210,7 @@ const Profile = () => {
             </div>
             : <div></div>}
         </div>
-
+           
         <div
           id="portfolio-list-section"
           className="row d-flex justify-content-around"
@@ -231,11 +234,21 @@ const Profile = () => {
           </Modal.Header>
           <Modal.Body>Start collaborating!</Modal.Body>
           <Modal.Footer>
+          {nextUser && (
+              <Link to={`/profiles/${nextUser.githubUser}`}>
+                <img
+                  src={nextButton}
+                  alt="next button"
+                  data-user2={user.githubUser}
+                  onClick={handleClose}
+                />
+              </Link>
+            )}
             <Button variant="secondary" onClick={handleClose} className="gradient">
               Close
             </Button>
           </Modal.Footer>
-        </Modal>      
+        </Modal>
       </div>
     </div>
 

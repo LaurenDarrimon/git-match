@@ -91,8 +91,13 @@ function App() {
                 element={<Dashboard />}
               />
               <Route
+
                 path="/about"
                 element={<About />}
+
+                path="/matches/:githubUser"
+                element={<Match />}
+
               />
 
               {/*
