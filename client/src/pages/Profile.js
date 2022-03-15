@@ -135,7 +135,7 @@ const Profile = () => {
           setIsOpen(true);
           setShow(true);
         } else {
-          window.location.assign(`/profiles/${nextUser.githubUser}`)
+          // window.location.assign(`/profiles/${nextUser.githubUser}`)
           console.log("no match");
         }
       }
