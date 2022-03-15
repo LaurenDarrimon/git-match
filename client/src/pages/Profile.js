@@ -189,11 +189,16 @@ const Profile = () => {
           <div>
             {nextUser && (
               <Link to={`/profiles/${nextUser.githubUser}`}>
-                <img
+                {githubUser ? <img
                   src={nextButton}
                   alt="next button"
                   data-user2={user.githubUser}
-                />
+                /> : 
+                <button className="btn btn-lg m-2 gradient">
+                Start Matching!
+              </button>
+              }
+                
               </Link>
             )}
 
