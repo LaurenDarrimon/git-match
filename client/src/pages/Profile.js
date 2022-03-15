@@ -163,6 +163,7 @@ const Profile = () => {
               src={nextButton}
               alt="next button"
               data-user2={user.githubUser}
+              style={{ cursor: 'pointer' }}
             />
           </div>
           <div onClick={handleSwipe}>
@@ -170,6 +171,7 @@ const Profile = () => {
               src={matchButton}
               alt="match button"
               data-user2={user.githubUser}
+              style={{ cursor: 'pointer' }}
             />
           </div>
         </div>
