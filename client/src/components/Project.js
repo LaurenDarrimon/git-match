@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { Link } from 'react-router-dom'
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 export default function Project(props) {
-  
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
 
   return (
     <div
