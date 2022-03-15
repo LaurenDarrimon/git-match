@@ -2,7 +2,8 @@
 import { Navigate, useParams } from "react-router-dom";
 import { QUERY_SINGLE_USER, QUERY_ME } from "../utils/queries";
 import { useQuery, useState, useMutation } from "@apollo/client";
-import Matches from "../components/Matches";
+import Matches from '../components/Matches';
+
 import Auth from '../utils/auth';
 
 
