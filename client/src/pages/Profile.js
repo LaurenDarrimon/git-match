@@ -100,7 +100,7 @@ const Profile = () => {
           console.log("both users have matched!!");
 
           addToMatches(githubUser1, githubUser2);
-
+          
         } else {
           console.log("no match");
         }
