@@ -178,7 +178,6 @@ const Profile = () => {
         <div className="col-md-5">
           <div>
             <h4>{user.name}</h4>
-            <p>email: {user.email}</p>
             <p>bio: {user.bio}</p>
             <p>location: {user.location}</p>
           </div>
