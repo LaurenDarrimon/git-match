@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery, useState, useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
 
 import Match from "../components/Match";
 import Project from "../components/Project";
@@ -25,13 +26,10 @@ const Profile = () => {
     }
   );
 
-  const allUserData = useQuery(
-     QUERY_USERS,
-  );
+  const allUserData = useQuery(QUERY_USERS);
 
-  console.log("all users")
-  console.log(allUserData.data)
-
+  console.log("all users");
+  console.log(allUserData.data);
 
   const [addSwipe, swipeData] = useMutation(ADD_SWIPE);
   //look for swipeData.error and swipeData.data
@@ -41,7 +39,7 @@ const Profile = () => {
 
   //console.log(data);
   const user = data?.me || data?.user || {};
-  console.log('user', data);
+  console.log("user", data);
   //if the user is logged in and the person logged in is on thier own profile, set logged in
   let loggedIn = false;
   if (Auth.loggedIn() && Auth.getProfile().data.githubUser === githubUser) {
@@ -62,10 +60,19 @@ const Profile = () => {
   }
 
   //EVENT handler for next button
-  const handleNext = async (event) => {
-    // console.log("next button!");
-    // console.log(event);
-  };
+  let nextUser;
+
+  if (allUserData.data) {
+    console.log("all users");
+    console.log(allUserData.data);
+
+    nextUser =
+      allUserData.data.users[Math.floor(Math.random() * allUserData.data.users.length)];
+
+      console.log("index:" + Math.floor(Math.random() * allUserData.data.users.length))
+    console.log("nextUser");
+    console.log(nextUser);
+  }
 
   //EVENT handler for swipe button
   const handleSwipe = async (event) => {
@@ -107,12 +114,10 @@ const Profile = () => {
           console.log("both users have matched!!");
 
           addToMatches(githubUser1, githubUser2);
-          
         } else {
           console.log("no match");
         }
       }
-
     } catch (e) {
       console.error(e);
     }
@@ -158,13 +163,18 @@ const Profile = () => {
         </div>
 
         <div>
-          <div onClick={handleNext}>
-            <img
-              src={nextButton}
-              alt="next button"
-              data-user2={user.githubUser}
-            />
+          <div>
+            {nextUser && (
+              <Link to={`/profiles/${nextUser.githubUser}`}>
+                <img
+                  src={nextButton}
+                  alt="next button"
+                  data-user2={user.githubUser}
+                />
+              </Link>
+            )}
           </div>
+
           <div onClick={handleSwipe}>
             <img
               src={matchButton}
