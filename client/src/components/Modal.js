@@ -1,54 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Modal, Button} from 'react-bootstrap/Modal';
+import { useState } from "react";
 
-const Modal = () => {
+const Modals = () => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   return (
-    <div
-      class="modal fade"
-      id="matchModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="matchModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div className="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title" id="matchModalLabel">
-                You made a match!
-            </h1>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            > Profile
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">Contact and begin collaborating. </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary gradient"
-              data-dismiss="modal"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-primary gradient">
-              <Link
-                className="btn btn-block btn-squared btn-light text-dark"
-                // to=
-                // // {`/profiles/${profile._id}`}
-              >
-                Meet your match.
-              </Link>
-            </button>
-          </div>
-        </div>
-      </div>
+    <div>
+      <Button variant="primary" onClick={handleShow}>
+        Launch demo modal
+      </Button>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>      
     </div>
+
   );
 };
 
-export default Modal;
+export default Modals;

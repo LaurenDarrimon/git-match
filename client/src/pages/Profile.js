@@ -1,6 +1,6 @@
-import React from "react";
+import {React, useState} from "react";
 import { Navigate, useParams } from "react-router-dom";
-import { useQuery, useState, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 
 import Match from "../components/Match";
@@ -13,10 +13,11 @@ import { ADD_SWIPE, ADD_MATCH } from "../utils/mutations";
 import Auth from "../utils/auth";
 import nextButton from "../assets/images/next.png";
 import matchButton from "../assets/images/match-double.png";
+import { Modal, Button } from 'react-bootstrap';
 
 const Profile = () => {
   //const [profileState, setProfileState] = useState({ githubUser2: '' });
-
+  const [isOpen, setIsOpen] = useState(false);
   const { githubUser } = useParams();
 
   const { loading, data } = useQuery(
@@ -36,6 +37,11 @@ const Profile = () => {
 
   const [addMatch, matchData] = useMutation(ADD_MATCH);
   //look for matchData.error and matchData.data
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   //console.log(data);
   const user = data?.me || data?.user || {};
@@ -112,8 +118,9 @@ const Profile = () => {
         console.log(uniqueSwipe[i].githubUser2);
         if (uniqueSwipe[i].githubUser2 === githubUser1) {
           console.log("both users have matched!!");
-
           addToMatches(githubUser1, githubUser2);
+          setIsOpen(true);
+          setShow(true);
         } else {
           console.log("no match");
         }
@@ -198,6 +205,20 @@ const Profile = () => {
             />
           ))}
         </div>
+      </div>
+
+      <div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>You've GITMATCHED!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Start collaborating!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>      
       </div>
     </div>
   );
