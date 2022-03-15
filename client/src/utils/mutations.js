@@ -57,7 +57,7 @@ export const ADD_MATCH = gql`
   mutation addMatch($githubUser: String!, $githubUser2: String!) {
     addMatch(githubUser: $githubUser, githubUser2: $githubUser2) {
       githubUser
-      swipeRight {
+      match {
         githubUser2
       }
     }
