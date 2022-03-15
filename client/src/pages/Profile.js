@@ -134,6 +134,7 @@ const Profile = () => {
           setIsOpen(true);
           setShow(true);
         } else {
+          // window.location.assign(`/profiles/${nextUser.githubUser}`)
           console.log("no match");
         }
       }
@@ -158,9 +159,7 @@ const Profile = () => {
     console.log(newMatchData2);
     //add matches
   };
-
-  // const checkMatches
-
+  
   return (
     <div>
       <div className="flex-row justify-center mb-3">
@@ -181,9 +180,8 @@ const Profile = () => {
             <p>location: {user.location}</p>
           </div>
         </div>
-
+        
         <div>
-
           <div>
             {nextUser && (
               <Link to={`/profiles/${nextUser.githubUser}`}>
@@ -212,7 +210,7 @@ const Profile = () => {
             </div>
             : <div></div>}
         </div>
-
+           
         <div
           id="portfolio-list-section"
           className="row d-flex justify-content-around"
@@ -236,6 +234,16 @@ const Profile = () => {
           </Modal.Header>
           <Modal.Body>Start collaborating!</Modal.Body>
           <Modal.Footer>
+          {nextUser && (
+              <Link to={`/profiles/${nextUser.githubUser}`}>
+                <img
+                  src={nextButton}
+                  alt="next button"
+                  data-user2={user.githubUser}
+                  onClick={handleClose}
+                />
+              </Link>
+            )}
             <Button variant="secondary" onClick={handleClose} className="gradient">
               Close
             </Button>
