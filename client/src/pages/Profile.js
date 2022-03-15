@@ -183,7 +183,7 @@ const Profile = () => {
         
         <div>
           <div>
-            {nextUser && (
+            {nextUser ? 
               <Link to={`/profiles/${nextUser.githubUser}`}>
                 {githubUser ? <img
                   src={nextButton}
@@ -195,8 +195,9 @@ const Profile = () => {
               </button>
               }
                 
-              </Link>
-            )}
+              </Link> :
+              <h4> Unfortunately, You are the only user on this app</h4>
+            }
 
           </div>
           {githubUser ?

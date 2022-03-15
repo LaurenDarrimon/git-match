@@ -15,6 +15,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
+import Match from './pages/Match'
 import Form from './components/Form';
 import Project from './components/Project';
 import Profile from './pages/Profile';
@@ -91,10 +92,10 @@ function App() {
                 element={<Dashboard />}
               />
               <Route
-
                 path="/about"
                 element={<About />}
-
+              />
+              <Route
                 path="/matches/:githubUser"
                 element={<Match />}
 
