@@ -25,6 +25,7 @@ const Profile = () => {
     }
   );
 
+
   const [addSwipe, swipeData] = useMutation(ADD_SWIPE);
   //look for swipeData.error and swipeData.data
 
@@ -33,7 +34,7 @@ const Profile = () => {
 
   //console.log(data);
   const user = data?.me || data?.user || {};
-
+  console.log('user', data);
   //if the user is logged in and the person logged in is on thier own profile, set logged in
   let loggedIn = false;
   if (Auth.loggedIn() && Auth.getProfile().data.githubUser === githubUser) {
@@ -90,9 +91,12 @@ const Profile = () => {
 
       const profileSwipeRight = data.user.swipeRight;
 
-      for (let i = 0; i < profileSwipeRight.length; i++) {
-        console.log(profileSwipeRight[i].githubUser2);
-        if (profileSwipeRight[i].githubUser2 === githubUser1) {
+      const uniqueSwipe = [...new Set(profileSwipeRight)];
+      console.log(uniqueSwipe);
+
+      for (let i = 0; i < uniqueSwipe.length; i++) {
+        console.log(uniqueSwipe[i].githubUser2);
+        if (uniqueSwipe[i].githubUser2 === githubUser1) {
           console.log("both users have matched!!");
 
           addToMatches(githubUser1, githubUser2);

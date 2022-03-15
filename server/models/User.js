@@ -47,8 +47,22 @@ const userSchema = new Schema({
     type: String,
   },
 
-  swipeRight: [{ githubUser2: { type: String } }],
-  match: [{ githubUser2: { type: String } }],
+  swipeRight: [
+    {
+      githubUser2: {
+        type: String,
+        // unique: true
+      }
+    }
+  ],
+  match: [
+    {
+      githubUser2: {
+        type: String,
+        // unique: true
+      }
+    }
+  ],
   projects: [
     {
       name: {
@@ -73,18 +87,18 @@ const userSchema = new Schema({
       ],
     },
   ],
-  swipeProject: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Project",
-    },
-  ],
-  project_match: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Project",
-    },
-  ],
+  // swipeProject: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Project",
+  //   },
+  // ],
+  // project_match: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Project",
+  //   },
+  // ],
 });
 
 // const projectSchema = new mongoose.Schema({
