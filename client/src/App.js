@@ -14,6 +14,7 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import Match from './pages/Match'
 import Project from './components/Project';
 import Profile from './pages/Profile';
 import CreateProject from './pages/CreateProject';
@@ -87,6 +88,10 @@ function App() {
               <Route
                 path="/me"
                 element={<Dashboard />}
+              />
+              <Route
+                path="/matches/:githubUser"
+                element={<Match />}
               />
 
               {/*
