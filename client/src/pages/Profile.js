@@ -217,7 +217,7 @@ const Profile = () => {
           </Modal.Header>
           <Modal.Body>Start collaborating!</Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
+            <Button variant="secondary" onClick={handleClose} className="gradient">
               Close
             </Button>
           </Modal.Footer>
