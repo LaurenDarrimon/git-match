@@ -19,9 +19,12 @@ export const QUERY_USERS = gql`
             count
           }
         }
-        swipeRight{
-          githubUser2
-        }
+      swipeRight{
+        githubUser2
+      }
+      match {
+        githubUser2
+      }
     }
   }
 `;
@@ -46,9 +49,12 @@ export const QUERY_ME = gql`
             count
           }
         }
-        swipeRight{
-          githubUser2
-        }
+      swipeRight{
+        githubUser2
+      }
+      match {
+        githubUser2
+      }
     }
   }
 `;
@@ -73,9 +79,12 @@ export const QUERY_SINGLE_USER = gql`
             count
           }
         }
-        swipeRight{
-          githubUser2
-        }
+      swipeRight{
+        githubUser2
+      }
+      match {
+        githubUser2
+      }
     }
   }
 `;
