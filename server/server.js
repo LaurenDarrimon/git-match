@@ -31,7 +31,7 @@ app.get('/*', function(req, res) {
         res.status(500).send(err)
       }
     })
-  })
+})
 
 
 // Create a new instance of an Apollo server with the GraphQL schema
