@@ -17,7 +17,7 @@ export default function Matches(props) {
           <br />
         </h4>
         <Link to={`/profiles/${props.githubUser2}`} 
-        activeClassName="active" className="btn btn-primary">
+        activeClassName="active" className="btn btn-primary gradient">
           View Profile
           </Link>
       </div>
