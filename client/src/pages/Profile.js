@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
@@ -74,14 +74,14 @@ const Profile = () => {
     // const allUserData = userData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);
     const allUserData = [];
 
-    for (let i = 0; i<userData.data.users.length; i++){
+    for (let i = 0; i < userData.data.users.length; i++) {
       if (userData.data.users[i].githubUser !== Auth.getProfile().data.githubUser) {
         allUserData.push(userData.data.users[i]);
       }
     }
     console.log('allUserData');
     console.log(allUserData);
-    
+
 
 
 
@@ -160,6 +160,8 @@ const Profile = () => {
     //add matches
   };
 
+  // const checkMatches
+
   return (
     <div>
       <div className="flex-row justify-center mb-3">
@@ -235,7 +237,7 @@ const Profile = () => {
               Close
             </Button>
           </Modal.Footer>
-        </Modal>      
+        </Modal>
       </div>
     </div>
 
