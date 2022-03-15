@@ -4,7 +4,7 @@ import { QUERY_USERS } from '../utils/queries';
 import { useQuery, useMutation } from "@apollo/client";
 
 import Auth from "../utils/auth";
-import logo from "../assets/images/git-match-logo.png";
+import logo from "../assets/images/git-match-nav.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = () => {
