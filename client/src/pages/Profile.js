@@ -26,10 +26,10 @@ const Profile = () => {
     }
   );
 
-  const allUserData = useQuery(QUERY_USERS);
+  const userData = useQuery(QUERY_USERS);
+  // const allUserData = UserData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);
 
-  console.log("all users");
-  console.log(allUserData.data);
+
 
   const [addSwipe, swipeData] = useMutation(ADD_SWIPE);
   //look for swipeData.error and swipeData.data
@@ -62,14 +62,27 @@ const Profile = () => {
   //EVENT handler for next button
   let nextUser;
 
-  if (allUserData.data) {
-    console.log("all users");
-    console.log(allUserData.data);
+  if (userData.data) {
+    //const allUserData = UserData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);\
+    console.log(userData.data.users)
+    // const allUserData = userData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);
+    const allUserData = [];
+
+    for (let i = 0; i<userData.data.users.length; i++){
+      if (userData.data.users[i].githubUser !== Auth.getProfile().data.githubUser) {
+        allUserData.push(userData.data.users[i]);
+      }
+    }
+    console.log('allUserData');
+    console.log(allUserData);
+    
+
+
 
     nextUser =
-      allUserData.data.users[Math.floor(Math.random() * allUserData.data.users.length)];
+      allUserData[Math.floor(Math.random() * allUserData.length)];
 
-      console.log("index:" + Math.floor(Math.random() * allUserData.data.users.length))
+    console.log("index:" + Math.floor(Math.random() * allUserData.length))
     console.log("nextUser");
     console.log(nextUser);
   }
@@ -174,17 +187,18 @@ const Profile = () => {
                 />
               </Link>
             )}
-            
-          </div>
 
-          <div onClick={handleSwipe}>
-            <img
-              src={matchButton}
-              alt="match button"
-              data-user2={user.githubUser}
-              style={{ cursor: 'pointer' }}
-            />
           </div>
+          {githubUser ?
+            <div onClick={handleSwipe}>
+              <img
+                src={matchButton}
+                alt="match button"
+                data-user2={user.githubUser}
+                style={{ cursor: 'pointer' }}
+              />
+            </div>
+            : <div></div>}
         </div>
 
         <div
@@ -203,6 +217,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+
   );
 };
 
