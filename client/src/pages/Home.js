@@ -28,7 +28,6 @@ const Home = () => {
 
           {loggedIn ? (
             <div>
-              <Nav />
               <Dashboard />
             </div>
           ) : (
