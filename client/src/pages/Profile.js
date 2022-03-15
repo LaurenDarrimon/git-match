@@ -107,7 +107,7 @@ const Profile = () => {
 
     console.log("githubUser1");
     console.log(githubUser1);
-
+    
     try {
       //add swipe
       const newSwipeData = await addSwipe({
