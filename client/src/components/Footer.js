@@ -25,7 +25,7 @@ const Footer = () => {
             className="btn btn-dark mb-3"
             onClick={() => navigate("/about")}
           >
-            &larr; ABOUT
+            ABOUT
           </button>
         </div>
       </div>

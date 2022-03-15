@@ -14,7 +14,10 @@ import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import About from './pages/About';
 import Match from './pages/Match'
+import Form from './components/Form';
+import Match from './pages/Match';
 import Project from './components/Project';
 import Profile from './pages/Profile';
 import CreateProject from './pages/CreateProject';
@@ -88,6 +91,10 @@ function App() {
               <Route
                 path="/me"
                 element={<Dashboard />}
+              />
+              <Route
+                path="/about"
+                element={<About />}
               />
               <Route
                 path="/matches/:githubUser"
