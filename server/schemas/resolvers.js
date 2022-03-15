@@ -206,7 +206,7 @@ const resolvers = {
       // Matchup.create(githubUser);
       return match;
     },
-
+    
     // remove user
     removeUser: async (parent, args) => {
       return User.findOneAndDelete(args.id);
