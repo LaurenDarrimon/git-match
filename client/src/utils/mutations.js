@@ -1,5 +1,11 @@
 import { gql } from "@apollo/client";
 
+// export const REMOVE_DUPE = gql`
+// mutation removeDupe($githubUser: String!) {
+
+// }
+// `
+
 export const LOGIN_USER = gql`
   mutation login($githubUser: String!, $password: String!) {
     login(githubUser: $githubUser, password: $password) {
