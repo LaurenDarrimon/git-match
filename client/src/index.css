@@ -63,3 +63,7 @@ h1, h2, h3, h4 {
 .modal-dialog{
   color: var(--peach);
 }
+
+header, footer {
+  background-image: linear-gradient(to right top, #121325, #121529, #12172d, #111831, #101a35, #151831, #18172e, #1a152a, #1b101f, #170a15, #10050a, #000000);
+}

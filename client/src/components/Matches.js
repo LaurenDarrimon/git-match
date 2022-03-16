@@ -12,7 +12,7 @@ export default function Matches(props) {
   return (
     
     <div
-      className="card portfolio-items col-md-5"
+      className="card portfolio-items col-md-5 m-2"
       data-aos="fade-up"
       data-aos-easing="linear"
       data-aos-duration="1500"

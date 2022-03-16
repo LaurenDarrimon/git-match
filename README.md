@@ -71,7 +71,7 @@ To run the application from, from the root folder run
 npm run develop
 ~~~
 
-And the client side and serveer side srcipts will run, and the application will open in your borwser. 
+And the client side and server side scripts will run, and the application will open in your browser. 
 
 ### Features
 
