@@ -9,22 +9,17 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard";
-import Match from "./pages/Match";
-import About from "./pages/About";
-import Form from "./components/Form";
-import Project from "./components/Project";
-import Profile from "./pages/Profile";
-import CreateProject from "./pages/CreateProject";
-import NotFound from "./pages/NotFound";
-import Nav from "./components/Nav";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import About from './pages/About';
+import Match from './pages/Match'
+import Profile from './pages/Profile';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-import "./index.css";
+import './index.css';
 
 import "./assets/fonts/LEMONMILK-Regular.woff2";
 import "./assets/fonts/LEMONMILK-Regular.woff";

@@ -15,7 +15,6 @@ import matchButton from "../assets/images/match-double.png";
 import { Modal, Button } from 'react-bootstrap';
 
 const Profile = () => {
-  //const [profileState, setProfileState] = useState({ githubUser2: '' });
   const [isOpen, setIsOpen] = useState(false);
   const { githubUser } = useParams();
 
@@ -27,9 +26,6 @@ const Profile = () => {
   );
 
   const userData = useQuery(QUERY_USERS);
-  // const allUserData = UserData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);
-
-
 
   const [addSwipe, swipeData] = useMutation(ADD_SWIPE);
   //look for swipeData.error and swipeData.data
@@ -42,7 +38,6 @@ const Profile = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  //console.log(data);
   const user = data?.me || data?.user || {};
   console.log("user", data);
   //if the user is logged in and the person logged in is on thier own profile, set logged in
@@ -68,9 +63,9 @@ const Profile = () => {
   let nextUser;
 
   if (userData.data) {
-    //const allUserData = UserData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);\
+    
     console.log(userData.data.users)
-    // const allUserData = userData.data.users.filter(user => user.githubUser !== Auth.getProfile.data.githubUser);
+    
     const allUserData = [];
 
     for (let i = 0; i < userData.data.users.length; i++) {
@@ -81,11 +76,7 @@ const Profile = () => {
     console.log('allUserData');
     console.log(allUserData);
 
-
-
-
-    nextUser =
-      allUserData[Math.floor(Math.random() * allUserData.length)];
+    nextUser = allUserData[Math.floor(Math.random() * allUserData.length)];
 
     console.log("index:" + Math.floor(Math.random() * allUserData.length))
     console.log("nextUser");
