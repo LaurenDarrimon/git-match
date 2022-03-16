@@ -3,7 +3,7 @@ import { useForm, ValidationError } from "@formspree/react";
 
 
 export default function Form() {
-  const [state, handleSubmit] = useForm("xzbogvlq");
+  const [state, handleSubmit] = useForm("xnqwzvzn");
   if (state.succeeded) {
     return (
       <p>Thanks for reaching out to the Git Match Team! We'll get back to you.  </p>
