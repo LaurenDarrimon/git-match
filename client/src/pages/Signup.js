@@ -73,6 +73,7 @@ const Signup = () => {
           <div className="col-12 col-lg-10">
             <div className="card">
               <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
+              <p>Please sign up with your GitHub user name.</p>
               <div className="card-body">
                 {data ? (
                   //  window.location.assign('/me');
@@ -107,7 +108,7 @@ const Signup = () => {
                       onChange={handleChange}
                     />
                     <button
-                      className="btn btn-block btn-info"
+                      className="btn btn-block btn-info gradient"
                       style={{ cursor: 'pointer' }}
                       type="submit"
                     >
