@@ -3,8 +3,8 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    githubUser: String
-    password: String
+    githubUser: String 
+    password: String 
     email: String
     name: String
     avatar: String
@@ -57,7 +57,6 @@ const typeDefs = gql`
     addProject(name: String!, githubUser: String!): Project
     addMatch(githubUser: String!, githubUser2: String!): User 
     addSwipe(githubUser: String!, githubUser2: String!): User
-
     removeUser(githubUser: ID!): User
   }
 `;

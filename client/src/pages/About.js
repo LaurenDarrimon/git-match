@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Form from "../components/Form";
 import AOS from "aos";
 import "aos/dist/aos.css";

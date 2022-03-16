@@ -1,13 +1,6 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
-
 import Dashboard from './Dashboard'
-// import Header from '../components/Header';
-// import Footer from '../components/Footer';
-import Nav from '../components/Nav';
-// import Login from './pages/Login';
-
 import '../index.css';
 
 const Home = () => {

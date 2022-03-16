@@ -63,9 +63,6 @@ const resolvers = {
             `https://api.github.com/users/${githubUser}`
           );
 
-          // console.log("______________userResponse_________");
-          // console.log(userResponse);
-
           results = {
             name: userResponse.data.name,
             avatar: userResponse.data.avatar_url,
@@ -75,8 +72,6 @@ const resolvers = {
             bio: userResponse.data.bio,
           };
 
-          // console.log("______________results_________");
-          // console.log(results);
         } catch (err) {
           // Handle Error Here
           console.error(err);
@@ -203,7 +198,6 @@ const resolvers = {
         },
         { new: true }
       );
-      // Matchup.create(githubUser);
       return match;
     },
     

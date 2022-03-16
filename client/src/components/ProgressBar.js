@@ -13,7 +13,6 @@ const ProgressBars = (props) => {
         // <ProgressBar variant="warning" now={language.count} key={2} />
         // <ProgressBar striped variant="danger" now={language.count} key={3} />
         ))} */}
-
       </ProgressBar>   
     </div>
   );

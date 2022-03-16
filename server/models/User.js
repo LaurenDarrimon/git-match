@@ -25,7 +25,6 @@ const userSchema = new Schema({
     required: true,
     trim: true,
     validate: [emailValidate, "invalid Email"],
-    //unique:true
   },
   name: {
     type: String,
@@ -51,7 +50,6 @@ const userSchema = new Schema({
     {
       githubUser2: {
         type: String,
-        // unique: true
       }
     }
   ],
@@ -59,7 +57,6 @@ const userSchema = new Schema({
     {
       githubUser2: {
         type: String,
-        // unique: true
       }
     }
   ],
@@ -87,47 +84,7 @@ const userSchema = new Schema({
       ],
     },
   ],
-  // swipeProject: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Project",
-  //   },
-  // ],
-  // project_match: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Project",
-  //   },
-  // ],
 });
-
-// const projectSchema = new mongoose.Schema({
-//     githubUser: {
-//         type: String,
-//         required: true,
-//         trim: true,
-//       },
-//       name: {
-//         type: String,
-//       },
-//       description: { type: String },
-//       repo_link: {
-//         type: String,
-//       },
-//       deployed_link: {
-//         type: String,
-//       },
-//       //languages: [languageSchema],
-//   });
-
-//   const languageSchema = new mongoose.Schema({
-//     language:{
-//         type: String
-//     },
-//     count: {
-//         type: Number
-//     }
-//   });
 
 // set up pre-save middleware to create password
 userSchema.pre("save", async function (next) {

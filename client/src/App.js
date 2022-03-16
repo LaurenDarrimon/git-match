@@ -16,13 +16,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import About from './pages/About';
 import Match from './pages/Match'
-import Form from './components/Form';
-
-import Project from './components/Project';
 import Profile from './pages/Profile';
-import CreateProject from './pages/CreateProject';
-import NotFound from './pages/NotFound';
-import Nav from './components/Nav';
 import Header from './components/Header';
 import Footer from './components/Footer';
 

@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { Link } from 'react-router-dom'
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -19,11 +16,6 @@ export default function Project(props) {
       data-aos-easing="linear"
       data-aos-duration="1500"
     >
-      {/* <img
-        className="card-img-top"
-        src={props.}
-        alt="development project thumbnail"
-      /> */}
       <div className="card-body">
         <h4 className="card-title">
           {props.name}
@@ -38,14 +30,6 @@ export default function Project(props) {
         >
           Code
         </a>
-        {/* <a
-          href={props.deployed_url}
-          target="_blank"
-          className="btn btn-primary"
-          rel="noreferrer"
-        >
-          Site
-        </a> */}
       </div>
     </div>
   );
