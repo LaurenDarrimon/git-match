@@ -220,21 +220,20 @@ const Profile = () => {
       </div>
 
       <div>
-        <Modal show={show} onHide={handleClose}>
+        <Modal show={show} onHide={handleClose} className="modal-card">
           <Modal.Header closeButton>
             <Modal.Title>You've GITMATCHED!</Modal.Title>
           </Modal.Header>
           <Modal.Body>Start collaborating!</Modal.Body>
           <Modal.Footer>
           {nextUser && (
-              <Link to={`/profiles/${nextUser.githubUser}`}>
-                <img
-                  src={nextButton}
-                  alt="next button"
-                  data-user2={user.githubUser}
-                  onClick={handleClose}
-                />
-              </Link>
+            <Button variant="secondary" 
+            href={`/profiles/${nextUser.githubUser}`}
+            onClick={handleClose} 
+            className="gradient"
+            >
+            Next
+          </Button>
             )}
             <Button variant="secondary" onClick={handleClose} className="gradient">
               Close
