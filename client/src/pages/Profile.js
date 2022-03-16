@@ -34,10 +34,11 @@ const Profile = () => {
   //look for matchData.error and matchData.data
 
   const [show, setShow] = useState(false);
+  const [haveNotSwiped, setHaveNotSwiped] = useState(true);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const handleSwiper = () => setHaveNotSwiped(true);
   const user = data?.me || data?.user || {};
   console.log("user", data);
   //if the user is logged in and the person logged in is on thier own profile, set logged in
@@ -124,9 +125,11 @@ const Profile = () => {
           addToMatches(githubUser1, githubUser2);
           setIsOpen(true);
           setShow(true);
+          setHaveNotSwiped(false)
         } else {
           // window.location.assign(`/profiles/${nextUser.githubUser}`)
           console.log("no match");
+          setHaveNotSwiped(false)
         }
       }
     } catch (e) {
@@ -180,6 +183,7 @@ const Profile = () => {
                   src={nextButton}
                   alt="next button"
                   data-user2={user.githubUser}
+                  onClick={handleSwiper}
                 /> : 
                 <button className="btn btn-lg m-2 gradient">
                 Start Matching!
@@ -191,7 +195,7 @@ const Profile = () => {
             }
 
           </div>
-          {githubUser ?
+          {githubUser && haveNotSwiped ?
             <div onClick={handleSwipe}>
               <img
                 src={matchButton}
